@@ -2,6 +2,9 @@
     margin: 0px;
     padding: 0px;
 }
+html {
+    scroll-behavior: smooth;
+  }
 body{
     /* background: rgb(24, 22, 22); */
     background: whitesmoke;
@@ -269,6 +272,24 @@ div>a>button img{
     opacity: 0.5;
     text-align: center;
    
+}
+/* Education */
+.Study{
+    display: flex;
+   margin: 20px auto;
+   justify-content: flex-start;
+   gap: 20px;
+    animation: slid .7s ease-in;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+.Study_icon>img{
+width: 60px;
+}
+@keyframes slid{
+    0% {transform: skew(53deg) translateX(-500px);}
+  
+    100% {transform: skew(0deg) translateX(-100px);}
 }
 
 @media all and (min-width: 120px) and (max-width: 419px){
