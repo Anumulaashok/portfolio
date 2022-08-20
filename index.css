@@ -11,8 +11,10 @@ body{
     color: black;
     width: 80%;
     margin: auto;
-    font-family:  cursive,'Bebas Neue';
+    /* font-family:  cursive,'Bebas Neue'; */
     /* font-family:"Roboto Slab",serif */
+    font-family: 'Bebas Neue', cursive;
+font-family: 'Secular One', sans-serif;
 }
 section{
     /* border: 1px solid rgb(45, 43, 43); */
