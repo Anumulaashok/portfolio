@@ -84,12 +84,8 @@ a{
     /* border: 10px solid green; */
     margin: auto;
     margin-top: 1%;
-    animation: circle 5s infinite forwards;
 }
-@keyframes circle{
-0%{transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);}
-25%{transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);}
-}
+
 
 .welcome{
     font-size: 3vw;
@@ -279,19 +275,27 @@ div>a>button img{
    margin: 20px auto;
    justify-content: flex-start;
    gap: 20px;
-    animation: slid .7s ease-in;
     padding: 20px;
+    animation: slid 3s ease-out;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 .Study_icon>img{
 width: 60px;
+border-radius: 50%;
+}
+.animateme{
+    animation: slid .7s ease-in;
 }
 @keyframes slid{
     0% {transform: skew(53deg) translateX(-500px);}
   
     100% {transform: skew(0deg) translateX(-100px);}
 }
-
+@keyframes me{
+    0% {transform: skew(53deg) translateX(-500px);}
+  
+    100% {transform: skew(0deg) translateX(-100px);}
+}
 @media all and (min-width: 120px) and (max-width: 419px){
     body{
      width: 500px; 
