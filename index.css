@@ -271,6 +271,46 @@ div>a>button img{
     text-align: center;
    
 }
+/* -----------------------------discssion section -------------------------------------*/
+.Discuss{
+    width: 70%;
+    display: flex;
+    margin: auto;
+    justify-content:space-between;
+    background: url("https://img.freepik.com/free-vector/abstract-blue-geometric-shapes-background_1035-17545.jpg?w=2000");
+}
+
+.Discuss>div{
+width: 50%;
+}
+.Discuss>div>img{
+    width: 300px;
+}
+.Discuss>div>form>input{
+    background-color: white;
+    border: 1px solid;
+    padding: 5px;
+    width: 80%;
+}
+.mess{
+    height: 80px;
+}
+.Discuss>div>form>input:nth-last-child(1){
+    
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #4070f4;
+    color: aliceblue;
+    font-weight: bold;
+    width: 30%;
+}
+.Discuss>div:nth-child(2){
+    background-color: aliceblue;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 /* Education */
 .Study{
     display: flex;
