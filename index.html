@@ -17,21 +17,23 @@
 <title>Ashok Anumula portfolio</title>
     </head>
 <body>
-    <section><nav id="navbar">
-    <div class="mode" style="color: white;">
-       Dark Mode
-        </div><div>
-      <ul id="head">
-        <li><a href="#home"> Home</a></li>
-        <li><a href="#About">About</a></li>
-        <li><a href="#Skills">Skills</a></li>
-        <li><a href="#Projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-</nav>
-</section>
 
+    <section>
+    <div class="topnav" id="myTopnav" >
+
+    <a href="#home" class="active"> Home</a>
+    <a href="#About">About</a>
+    <a href="#Skills">Skills</a>
+    <a href="#Projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+      
+    </a>
+</div>
+
+
+</section>
 <br id="home">
 <section>
 <div class="padding">
@@ -44,7 +46,7 @@
     <h2 class="welcome colors">Hello 👋,<br> I'm <span> Ashok</span> <br>Backend Developer </h2>
  
 </div>
-<div class="Download" ><a href="./components/ANUMULA_ASHOK_Resume.pdf" download>
+<div class="Download" ><a style="text-decoration: none; color: white;" href="./components/ANUMULA_ASHOK_Resume.pdf" download>
     Resume <i class="fa fa-cloud-download" style="font-size:24px"></i></a>
 </div>
 </section>
@@ -55,7 +57,6 @@
     </div>
     <br>
     <div class="intro">
-        <!-- <p><b>I'am Anumula Ashok</b></p> -->
         <br>
         <p>An enthusiastic Backend Developer, Adaptability to learn new technologies, Agile in nature and good to work in a collaborative team, Looking forward to utilizing my current skillset and experience of working on projects to create a mark in the software industry    </p>
     </div>
@@ -139,6 +140,19 @@
     </div>
 
 </section>
+<!-- <section class="git">
+    <center><b><u> <h2>github-calendar</h2></u></b></center>
+    <br>
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+/>
+
+<div class="calendar">
+   
+    Loading the data just for you.
+</div>
+</section> -->
 <br id="contact">
 <section>
 <div class="contact">
@@ -234,7 +248,7 @@ function Checkmode(){
         console.log(x);
 if(!x){
   x=true;
-    mode.innerText="Light Mode";
+   mode.innerHTML=``
     u.style="color:white;";
     hh.style="color:white;";
     modes.style="background: rgb(24, 22, 22);color:white;"
@@ -250,19 +264,36 @@ else{
 }
 }
 
-// function sendEmail(){
-//     Email.send({
-// SecureToken : "2abff89b-9b92-40c4-87b4-a802f52d01ff",
-// To : 'anumulaashok85@gmail.com',
-// // From : "anumulaashok85@gmail.com",
-//  From : document.getElementById("Email").value,
-//     Subject : "Portfolio feedback",
-//     Body :document.getElementById("mess").value
-// }).then(
-//   message => alert(message)
-// );
-// }
-  
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
 
 
+</script>
+
+<!-- Include the library. -->
+<script
+  src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
+</script>
+
+<!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+
+
+<script>
+    GitHubCalendar(".calendar", "anumulaashok");
+
+    // or enable responsive functionality:
+    GitHubCalendar(".calendar", "anumulaashok", { responsive: true });
+
+    // Use a proxy
+    GitHubCalendar(".calendar", "anumulaashok", {
+       proxy (anumulaashok) {
+         return fetch(`https://your-proxy.com/github?user=${anumulaashok}`)
+       }
+    }).then(r => r.text())
 </script>
