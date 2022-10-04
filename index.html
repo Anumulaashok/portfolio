@@ -100,7 +100,7 @@
     <br>
     <p>Tech Stack: HTML | CSS | JavaScript</p>
     <div>   <a href="https://github.com/Anumulaashok/newrepo.git" target="_blank"><button><p> CODE </p><img src="./components/github logo.png" alt="link logo"></button>
-    </a> <a href="https://shopbopcom.netlify.app" target="_blank"><button><p> LIVE</p> <img src="./components/link.jpg" alt="gitlogo"></button> </a></div>
+    </a> <a href="https://shopbopwebsite.netlify.app/" target="_blank"><button><p> LIVE</p> <img src="./components/link.jpg" alt="gitlogo"></button> </a></div>
 </div>
  </div>
 </div>
@@ -140,19 +140,19 @@
     </div>
 
 </section>
-<!-- <section class="git">
-    <center><b><u> <h2>github-calendar</h2></u></b></center>
+<section class="gits">
+    <!-- <center><b><u> <h2>github-calendar</h2></u></b></center>
     <br>
     <link
   rel="stylesheet"
   href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
-/>
+/> -->
 
 <div class="calendar">
    
     Loading the data just for you.
 </div>
-</section> -->
+</section>
 <br id="contact">
 <section>
 <div class="contact">
@@ -171,15 +171,16 @@
 </div>
 </section>
 <!-- <h2 style="text-align: center;"> Get In Touch</h2>
-<section class="Discuss">
+<form onsubmit="sendEmail(); reset(); return false;">  -->
+<!-- <section class="Discuss">
     
     <div> <img src="components/discussion.logo.jpg" ></div>
     <div style="text-align: center;">
-        <form onsubmit="sendEmail(); reset(); return false;">
-           
+       
+           <form action="https://formspree.io/f/xqkjblnl" method="post">
             <label for="Name">Name*</label>
             <br>
-            <input type="text" id="name" name="Name">
+            <input type="text" id="name" name="Name" >
             <br>
             <label for="email">Email*</label>
             <br>
@@ -193,12 +194,17 @@
             <br>
             <input type="text" id="mess" name="Message" class="mess">
             <br>
-            <input type="submit">
+            <input type="submit" >
+          
         </form>
     </div>
-</section>
- -->
+</section> -->
 
+<!-- its a github calnedar
+ <a target="_blank" rel="noreferrer" id="cicin" href="https://github.com/anumulaashok">
+    <p style="margin-left: 20px;">My Github contributions</p>
+    <img width="95%" style="margin-bottom:20px; "  id="github-contributions" src="https://ghchart.rshah.org/anumulaashok" href="https://github.com/anumulaashok" alt="Anumula_Ashok's Github chart" />
+</a> -->
 
 
 
@@ -277,14 +283,14 @@ function myFunction() {
 </script>
 
 <!-- Include the library. -->
-<script
+<!-- <script
   src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
-</script>
+</script> -->
 
 <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
 
 
-<script>
+<!-- <script>
     GitHubCalendar(".calendar", "anumulaashok");
 
     // or enable responsive functionality:
@@ -296,4 +302,16 @@ function myFunction() {
          return fetch(`https://your-proxy.com/github?user=${anumulaashok}`)
        }
     }).then(r => r.text())
+</script> -->
+<script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+
+<!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+<link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+
+
+
+<script>
+  GitHubCalendar(".calendar", "anumulaashok");
+  // or enable responsive functionality
+  GitHubCalendar(".calendar", "anumulaashok", { responsive: true });
 </script>

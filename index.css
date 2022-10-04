@@ -342,6 +342,10 @@ border-radius: 50%;
 @media all and (min-width: 120px) and (max-width: 419px){
     body{
      width: 100%; 
+     /* background-color: #4070f4; */
+    }
+    .text_muted {
+        
     }
     .intro{
         font-size: 12px;
@@ -413,8 +417,9 @@ border-radius: 50%;
         width: 100%;
         /* color: black; */
         /* background-image: url("https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHNvbGlkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60"); */
-        /* background-color: rgb(63, 47, 47); */
+        /* background-color: rgb(220, 220, 220); */
     }
+   
 
     .welcome{
         color: black;
