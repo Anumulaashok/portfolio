@@ -11,65 +11,16 @@ body{
     color: black;
     width: 80%;
     margin: auto;
-    /* font-family:  cursive,'Bebas Neue'; */
+  
     /* font-family:"Roboto Slab",serif */
-    font-family: 'Bebas Neue', cursive;
-font-family: 'Secular One', sans-serif;
+ 
+font-family: 'Secular One', "Sofia", sans-serif;
 }
 section{
    
     padding: 20px;
     margin-top:3% ;
 }
-/* #navbar{
-position: fixed;
-width: 98%;
-background-color: rgb(24, 22, 22);
-top: 0;
-left: 0;
-}
-a{
-    text-decoration: none;
-    color: white;
-
-    
-}
-
-#navbar{
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    }
-    
-#navbar ul li {
-  background:rgb(24, 22, 22);
-    display: inline-block;
-    margin: 10px;
-    position: relative;    
-
-}
-#navbar ul li ::after{
-    content: '';
-    width: 0%;
-    height: 3px;
-    background: #4e72d4;  
-    position: absolute;  
-    left: 0;
-    bottom: -6px;
-    transition: 0.5s;
-}
-#navbar ul li :hover::after{
-    width: 100%;
-}
-#navbar>div>img{
-    height: auto;
-    width: fit-content;
-} */
-
-/* <-----------------Navar part done-----------> */
-
 .Circle>div{
     width: 100%;
 
@@ -289,11 +240,16 @@ width: 50%;
 }
 .Discuss>div>form>input{
     background-color: white;
-    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    gap:10px;
+    margin-top: 10px;
     padding: 5px;
     width: 80%;
 }
 .mess{
+    
     height: 80px;
 }
 .Discuss>div>form>input:nth-last-child(1){
@@ -307,10 +263,7 @@ width: 50%;
     font-weight: bold;
     width: 30%;
 }
-.Discuss>div:nth-child(2){
-    background-color: aliceblue;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+
 
 /* Education */
 .Study{
@@ -374,6 +327,35 @@ border-radius: 50%;
        .call{
         margin-top: -30px;
        }
+       .Discuss{
+        width: 80%;
+        display: flex;
+        margin: auto;
+        position: relative;
+        background: url("https://img.freepik.com/free-vector/abstract-blue-geometric-shapes-background_1035-17545.jpg?w=2000");
+    }
+    .contact_img{
+        visibility: collapse;
+    }
+    .contact_content{
+        position: absolute;
+        align-items: center;
+        border: 1mm solid gold;
+        width: 200%;
+    }
+    .Discuss>div>form>input{
+        background-color: white;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        gap:10px;
+        margin-top: 10px;
+        padding: 5px;
+        width: 150%;
+    }
+    .Discuss>div>form>input:nth-last-child(1){
+        width: fit-content;
+    }
 }
 
 @media all and (min-width: 420px) and (max-width: 499px){
