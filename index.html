@@ -1,298 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anumula_Ashok</title>
-    <link rel="shortcut icon" href="components/A.logo.png" />
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-        <!-- */ <----font- -->
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Secular+One&display=swap" rel="stylesheet">
-        <!-- For icon -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <---------------Tilte------------->
-<title>Ashok Anumula portfolio</title>
-    </head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-75XE03RFQY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anumula Ashok - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --text-color: #e6edf3;
+      --accent-color: #64ffda;
+      --muted-text: #8b949e;
+    }
 
-  gtag('config', 'G-75XE03RFQY');
-</script>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    .text-accent {
+      color: var(--accent-color);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--accent-color);
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      color: var(--accent-color);
+      transition: 0.3s;
+    }
+    .btn-outline:hover {
+      background: rgba(100,255,218,0.1);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
 <body>
 
-    <section>
-    <div class="topnav" id="myTopnav" >
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#0d1117]/80 backdrop-blur border-b border-gray-800">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#home" class="font-['Space Mono'] text-xl font-bold text-accent">Anumula Ashok</a>
+      <ul class="hidden md:flex space-x-8 text-sm">
+        <li><a href="#about" class="hover:text-accent">About</a></li>
+        <li><a href="#projects" class="hover:text-accent">Projects</a></li>
+        <li><a href="#skills" class="hover:text-accent">Skills</a></li>
+        <li><a href="#contact" class="hover:text-accent">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <a href="#home" class="active"> Home</a>
-    <a href="#About">About</a>
-    <a href="#Skills">Skills</a>
-    <a href="#Projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-      
-    </a>
-</div>
+  <main class="container mx-auto px-6">
+    <!-- Hero -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center space-y-6">
+      <p class="text-accent font-semibold fade-up">Hello, I’m</p>
+      <h1 class="text-5xl md:text-7xl font-bold fade-up">Anumula Ashok</h1>
+      <p class="text-xl md:text-2xl text-gray-400 fade-up">Software Engineer – Backend & AI Systems</p>
+      <a href="#about" class="btn-outline mt-6 fade-up">Learn More</a>
+    </section>
 
-
-</section>
-<br id="home">
-<section>
-<div class="padding">
-<div class="Circle ">
-   <div> <img src="./components/Ashok.jpg" alt=""></div>
-</div>
-
-</div>
-<div>
-    <h2 class="welcome colors">Hello 👋,<br> I'm <span> Ashok</span> <br>Backend Developer </h2>
- 
-</div>
-<div class="Download" ><a style="text-decoration: none; color: white;" href="./components/ANUMULA_ASHOK_Resume.pdf" download>
-    Resume <i class="fa fa-cloud-download" style="font-size:24px"></i></a>
-</div>
-</section>
-<br id="About">
-<section class="padding" >
-    <div class="headding About" >
-       <h1><u> About </u> </h1>
-    </div>
-    <br>
-    <div class="intro">
-        <br>
-        <p>An enthusiastic Backend Developer, Adaptability to learn new technologies, Agile in nature and good to work in a collaborative team, Looking forward to utilizing my current skillset and experience of working on projects to create a mark in the software industry    </p>
-    </div>
-</section>
-<br  id="Skills">
-<section>
-    <div class="headding ">
-        <h1 style="margin-bottom:40px ;"><u> Skills </u></h1>
-     </div>
-     <div  class="logo " style="color: black;">   <div><img src="/components/java.png" alt=""> <p>JAVA</p></div>
-    <div><img src="./components/javascript-log.png" alt=""><p>JavaScript</p></div>
-    <div><img src="./components/html.png" alt=""><p>HTML</p></div>
-    <div><img src="./components/css logo.png" alt=""><p>CSS</p></div>
-    <div><img src="./components/github logo.png" alt=""><p>GitHub</p></div>
-    <div><img src="./components/sql logo.png" alt=""><p>MySQL</p></div>
-    <div><img src="./components/hibernate_logo.gif" alt=""><p>Hibernate</p></div>
-    <div><img src="./components/springboot.jpg" alt=""><p>SpringBoot</p></div>
-</div>
- 
-</section>
-<br  id="Projects">
-<section >
- <div  class="headding " > <h1 style="margin-bottom:40px ;"><u>Projects</u> </h1></div>
- <div id="pro"> 
-    <div>        
-        <h2>Headphone zone</h2>
-        <img class="heaadphoneimg" src="./components/headphonezone1.png" alt="headphonezone png">
-        <p>Headphone zone is a e-commerce website where users can buy number of items in it</p>
-        <br>
-        <p>Tech Stack: HTML | CSS | JavaScript</p>
-
-    <div>   <a href="https://github.com/Anumulaashok/headphone-zone/tree/main/headphonezone" target="_blank"><button><p> CODE </p>
-        <img  src="./components/github logo.png" alt="gitlogo"></button></a>
-        <a href="https://headphonezones.netlify.app" target="_blank"><button><p> LIVE</p> 
-            <img src="./components/link.jpg" alt="link logo"> </button> </a></div>
-</div>
-<div>
-     <h2>Shopbop</h2>
-    <img class="shopimg"  src="./components/headphonezone2.png" alt="">
-    <p>Its a Shopping website for all men and women user can buy thorw online method</p>
-    <br>
-    <p>Tech Stack: HTML | CSS | JavaScript</p>
-    <div>   <a href="https://github.com/Anumulaashok/newrepo.git" target="_blank"><button><p> CODE </p><img src="./components/github logo.png" alt="link logo"></button>
-    </a> <a href="https://shopbopwebsite.netlify.app/" target="_blank"><button><p> LIVE</p> <img src="./components/link.jpg" alt="gitlogo"></button> </a></div>
-</div>
- </div>
-</div>
-</section>
-<br>
-<section>
-    <div class="headding "><h2><u>Study & Experience</u> </h2></div>
-    <div style="gap: 20px;">
-        <div class="Study">
-        <div>Feb 2022 - Present</div>
-        <div class="Study_icon"><img src="./components/Study.png" alt=""></div>
-        <div>
-            <h2> Full Stack Web Development (Trainee)</h2>
-            <h3>Masai School, Bangalore</h3>
-            <p>Worked extensively on,</p>
-            <p>- JAVA</p>
-            <p>- JavaScript</p>
-            <p>- Data Structure and Algorithms</p>
-            <p>- Soft skills</p>
-        </div>
-    </div>
-    <div class="Study">
-        <div>Aug 2021 - Feb 2022</div>
-        <div class="Study_icon"><img src="./components/work.jpg" alt=""></div>
-        <div>
-            <h2>Sales Officer (Finanace)</h2>
-            <h3>L&T Finanace Limited, Medak Telangana</h3>
-            <p>Worked extensively on,</p>
-            <p>-  Identify clients and maintain client base through efficient
-                interactions</p>
-            <p>- Develop and maintain relationship with dealers and managers and influential personel
-                with client</p>
-            <p>- Analyze all information to develop strategies and ensure the achievement of all
-                financial objectives for the client</p>
-        </div>
-        </div>
-    </div>
-
-</section>
-<section class="gits">
-    <!-- <center><b><u> <h2>github-calendar</h2></u></b></center>
-    <br>
-    <link
-  rel="stylesheet"
-  href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
-/> -->
-<div class="headding "><h2><u>GitHubCalendar</u> </h2></div>
-<div class="calendar">
-   
-    Loading the data just for you.
-</div>
-</section>
-<br id="contact">
-<section>
-<div class="contact">
-    <h2><u>Contact</u></h2>
-</div>
-<div class="logos">
-    <a href="https://github.com/Anumulaashok"  target="_blank">  <img src="./components/github logo.png" alt="Ashok github logo"></a>
-    <a href="https://www.linkedin.com/in/ashoksmart143/"  target="_blank"> <img src="./components/linked in logo.png" alt="linkedin logo "></a>
-  <a href="https://www.instagram.com/ashoksmart_u_r_heart/"  target="_blank">  <img src="./components/instagram.png" alt="instagram logo"></a>
-   <a href="mailto:anumulaashok85@gmail.com"  target="_blank"> <img src="./components/gmail.png" alt="gmail logo"></a>
-</div>
-<br>
-<div class="call">
-   <a href="tel:+91 8179463267"> <img src="./components/cell phone.png" alt="cellephone">
-    <h3 class="hh">+91 8179463267</h3></a>
-</div>
-</section>
-<!-- <h2 style="text-align: center;"> Get In Touch</h2>
-<form onsubmit="sendEmail(); reset(); return false;">  -->
-<section class="Discuss">
+    <!-- About -->
+    <section id="about" class="py-24 space-y-6">
+      <h2 class="text-3xl font-bold text-accent mb-8">About Me</h2>
+      <p class="max-w-2xl leading-relaxed text-gray-300 fade-up">
+        Dynamic Software Engineer with 2.5+ years of experience in backend and full-stack development, 
+        specializing in scalable microservices, AI-driven solutions, and real-time analytics. 
+        Skilled in Java, Spring Boot, Node.js, and MongoDB with advanced expertise in LangChain, RAG, and AI Agents.
+      </p>
+    </section>
     
-    <div class="contact_img"> <img src="components/discussion.logo.jpg" ></div>
-    <div style="text-align: center;" class="contact_content">
-    <div>  <i class="fa fa-paper-plane" aria-hidden="true" style="font-size: 22px;"></i></div> 
-           <form action="https://formspree.io/f/xqkjblnl" method="post">
-           
-            <input type="text" id="name" name="Name" placeholder="Enter Name">
-            
-            <input type="email" id="Email" name="email" placeholder="Enter Email">
-          
-            <input type="number" id="Phone" name="phone" placeholder="Enter Phone Number">
-           
-            <input type="text" id="mess" name="Message" class="mess" placeholder="Enter Message">
-            <br>
-            <input style="margin-top: 20px;" type="submit" >
-          
+    <!-- Skills -->
+    <section id="skills" class="py-24">
+      <h2 class="text-3xl font-bold text-accent mb-12">Technical Skills</h2>
+      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+        <!-- Backend -->
+        <div class="p-6 rounded-lg border border-gray-800 space-y-3 fade-up">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="16 3 12 7 8 3"></polyline><line x1="12" y1="21" x2="12" y2="17"></line></svg>
+          <h3 class="text-xl font-bold">Backend</h3>
+          <p class="text-gray-400">Java, Spring Boot, Node.js, REST APIs, Microservices</p>
+        </div>
+
+        <!-- Databases -->
+        <div class="p-6 rounded-lg border border-gray-800 space-y-3 fade-up">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19C3 20.6569 7.02944 22 12 22C16.9706 22 21 20.6569 21 19V5"></path><path d="M3 12C3 13.6569 7.02944 15 12 15C16.9706 15 21 13.6569 21 12"></path></svg>
+          <h3 class="text-xl font-bold">Databases</h3>
+          <p class="text-gray-400">MongoDB, MySQL, NoSQL</p>
+        </div>
+        
+        <!-- Frontend -->
+        <div class="p-6 rounded-lg border border-gray-800 space-y-3 fade-up">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="12" x2="12" y2="12"></line><line x1="8" y1="8" x2="8" y2="8"></line><line x1="16" y1="8" x2="16" y2="8"></line></svg>
+          <h3 class="text-xl font-bold">Frontend</h3>
+          <p class="text-gray-400">React, HTML, CSS, JavaScript</p>
+        </div>
+
+        <!-- AI & Tools -->
+        <div class="p-6 rounded-lg border border-gray-800 space-y-3 fade-up">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+          <h3 class="text-xl font-bold">AI & Tools</h3>
+          <p class="text-gray-400">LangChain, RAG, Tavily, Pinecone, ChatGPT</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24">
+      <h2 class="text-3xl font-bold text-accent mb-12">Projects</h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="p-6 rounded-lg border border-gray-800 fade-up">
+          <h3 class="text-xl font-bold">AI-Powered Reporting Engine</h3>
+          <p class="text-gray-400 mt-2">Engineered modular reporting system with 15+ charts, integrated with GA4 for real-time insights.</p>
+          <div class="mt-4 flex space-x-4">
+            <a href="#" class="btn-outline text-sm">Live Demo</a>
+            <a href="#" class="btn-outline text-sm">GitHub</a>
+          </div>
+        </div>
+        <div class="p-6 rounded-lg border border-gray-800 fade-up">
+          <h3 class="text-xl font-bold">Prompt-to-Chart System</h3>
+          <p class="text-gray-400 mt-2">Natural language → visualization using AI agents. Simplifies reporting for non-technical users.</p>
+          <div class="mt-4 flex space-x-4">
+            <a href="#" class="btn-outline text-sm">Live Demo</a>
+            <a href="#" class="btn-outline text-sm">GitHub</a>
+          </div>
+        </div>
+        <div class="p-6 rounded-lg border border-gray-800 fade-up">
+          <h3 class="text-xl font-bold">AI Agents for Data Analytics</h3>
+          <p class="text-gray-400 mt-2">Automated agents for widget creation, predictive analysis, and funnel stage optimization.</p>
+          <div class="mt-4 flex space-x-4">
+            <a href="#" class="btn-outline text-sm">Live Demo</a>
+            <a href="#" class="btn-outline text-sm">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 text-center">
+      <h2 class="text-3xl font-bold text-accent mb-12">Get in Touch</h2>
+      <p class="text-gray-400 mb-8 fade-up">Interested in working together or have a question? Reach out below:</p>
+      <div class="flex justify-center space-x-6 fade-up">
+        <!-- Formspree Contact Form -->
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_FORM_ID" method="POST" class="max-w-xl mx-auto w-full space-y-4">
+          <div>
+            <label for="name" class="sr-only">Name</label>
+            <input type="text" name="name" id="name" placeholder="Your Name" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent">
+          </div>
+          <div>
+            <label for="email" class="sr-only">Email</label>
+            <input type="email" name="_replyto" id="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent">
+          </div>
+          <div>
+            <label for="message" class="sr-only">Message</label>
+            <textarea name="message" id="message" rows="5" placeholder="Your Message" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
+          </div>
+          <button type="submit" class="w-full btn-outline font-bold">Send Message</button>
         </form>
-    </div>
-</section>
+      </div>
 
-<!-- its a github calnedar
- <a target="_blank" rel="noreferrer" id="cicin" href="https://github.com/anumulaashok">
-    <p style="margin-left: 20px;">My Github contributions</p>
-    <img width="95%" style="margin-bottom:20px; "  id="github-contributions" src="https://ghchart.rshah.org/anumulaashok" href="https://github.com/anumulaashok" alt="Anumula_Ashok's Github chart" />
-</a> -->
+      <div class="flex justify-center space-x-6 mt-12 fade-up">
+        <a href="mailto:anumulaashok85@gmail.com" class="hover:text-accent" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+        <a href="https://github.com/Anumulaashok" target="_blank" class="hover:text-accent" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 3c0-.98-.66-1.92-1.94-2.27A2.99 2.99 0 0 0 16 0c-1.63 0-3.23.94-4.5 2.1-1.27-1.16-2.87-2.1-4.5-2.1A2.99 2.99 0 0 0 3.09.73C1.81 1.08 1.15 2.02 1.15 3c0 1.95 2.15 4.3 6.44 7-.84.85-1.94 1.25-2.61 1.54L2.5 14v1.87a3.37 3.37 0 0 0 .94 2.61c-3.14.35-6.44 1.54-6.44 7A5.44 5.44 0 0 0 0 19.23 5.07 5.07 0 0 0 .09 21c0 .98.66 1.92 1.94 2.27A2.99 2.99 0 0 0 8 24c1.63 0 3.23-.94 4.5-2.1l1.27 1.16c1.27-1.16 2.87-2.1 4.5-2.1z"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ashoksmart143" target="_blank" class="hover:text-accent" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
+    </section>
+  </main>
 
+  <!-- Footer -->
+  <footer class="py-6 text-center text-gray-500 border-t border-gray-800">
+    © 2025 Anumula Ashok
+  </footer>
 
+  <script>
+    // fade-in on scroll
+    const elements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.1 });
 
-
-<div class="footer">
-    © 2022 Designed and Built by Ashok. Contact : +91 8179463267 or Mail at : anumulaashok85@gmail.com
-</div>
+    elements.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
-<!-- 
-<script src="https://smtpjs.com/v3/smtp.js"></script> -->
-<script>
-    let imgheadphonezone=document.querySelector(".heaadphoneimg");
-   let shopbop=document.querySelector(".shopimg");
-
-   
-    headphonedata=["./components/headphonezone2.png","./components/headphonezone3.png","./components/headphonezone4.png","./components/headphonezone5.png","./components/headphonezone1.png"]
-    shopbopdata=["./components/shopbop1.png","./components/shopbop2.png","./components/shopbop3.png","./components/shopbop4.png","./components/shopbop5.png","./components/shopbop6.png","./components/shopbop7.png","./components/shopbop8.png","./components/shopbop9.png","./components/shopbop10.png","./components/shopbop11.png","./components/shopbop12.png","./components/shopbop13.png"]
-    display(imgheadphonezone,headphonedata);
-    display(shopbop,shopbopdata);    
-
-
-   function display(x,data){
-    let i=0;
-    setInterval(()=>{
-        if(i>=data.length-1){
-            x.src=data[i];
-            i=0;
-        }
-        else{
-        x.src=data[i];
-            i++;
-        }
-    },3000)
-   
-}
-
-    let mode= document.querySelector(".mode");
-    mode.addEventListener("click",function(){
-        Checkmode()
-    });
-    let x= false;
-function Checkmode(){
-        let modes= document.querySelector("body");
-        let u= document.querySelector(".colors");
-        let hh= document.querySelector(".hh");
-        console.log(x);
-if(!x){
-  x=true;
-   mode.innerHTML=``
-    u.style="color:white;";
-    hh.style="color:white;";
-    modes.style="background: rgb(24, 22, 22);color:white;"
-}
-else{
-    x=false;
-    mode.classList.remove("mystyle");
-    mode.innerText="Dark Mode";
-    u.style="color:black;"
-    hh.style="color:black;"
-    modes.style="color:black;"
-    modes.style="background:whitesmoke;"
-}
-}
-
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
-
-</script>
-
-
-<script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
-
-
-
-<script>
-  GitHubCalendar(".calendar", "anumulaashok");
-  GitHubCalendar(".calendar", "anumulaashok", { responsive: true });
-
-</script>
