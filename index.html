@@ -1,204 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anumula Ashok - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      --bg-color: #0d1117;
-      --text-color: #e6edf3;
-      --accent-color: #64ffda;
-      --muted-text: #8b949e;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-    }
-
-    .text-accent {
-      color: var(--accent-color);
-    }
-
-    .btn-outline {
-      border: 1px solid var(--accent-color);
-      padding: 0.5rem 1.25rem;
-      border-radius: 6px;
-      color: var(--accent-color);
-      transition: 0.3s;
-    }
-    .btn-outline:hover {
-      background: rgba(100,255,218,0.1);
-    }
-
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease-out;
-    }
-    .fade-up.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Anumula Ashok | Software Engineer</title>
+	<link rel="icon" href="images/fav.png">
+	<script defer="defer" src="js/main.e7c7970a12833611eb02.js"></script>
+	<link href="css/main.40f27e161ba829c32fbb.css" rel="stylesheet">
 </head>
 <body>
+  <div class="circle-cursor circle-cursor--outer"></div>
+	<nav class="navigation-bar">
+		<ul class="navigation">
+			<li class="navigation__item navigation__item--active" id="nav-hero"><a href="#hero">Home</a></li>
+			<li class="navigation__item" id="nav-about"><a href="#about">About</a></li>
+			<li class="navigation__item" id="nav-projects"><a href="#projects">Projects</a></li>
+			<li class="navigation__item" id="nav-contact"><a href="#contact">Contact</a></li>
+		</ul>
+	</nav>
+	<div class="hero" id="hero">
+		<div class="canvas"><canvas class="connecting-dots"></canvas></div>
+		<div class="heading">
+			<div class="heading__line-1">Hello, I'm <span>Ashok</span>.</div>
+			<div class="heading__line-2">I'm a Software Engineer specializing in Backend & AI Systems.</div><a
+				href="#about" class="heading__link">
+				<div class="heading-cta">View my work <svg class="heading__arrow" version="1.1"
+						xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+						<title>arrow-right</title>
+						<path
+							d="M11.293 5.707l5.293 5.293h-11.586c-0.552 0-1 0.448-1 1s0.448 1 1 1h11.586l-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l7-7c0.092-0.092 0.166-0.202 0.217-0.324 0.101-0.245 0.101-0.521 0-0.766-0.049-0.118-0.121-0.228-0.217-0.324l-7-7c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z">
+						</path>
+					</svg></div>
+			</a>
+		</div>
+	</div>
 
-  <!-- Navbar -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-[#0d1117]/80 backdrop-blur border-b border-gray-800">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#home" class="font-['Space Mono'] text-xl font-bold text-accent">Anumula Ashok</a>
-      <ul class="hidden md:flex space-x-8 text-sm">
-        <li><a href="#about" class="hover:text-accent">About</a></li>
-        <li><a href="#projects" class="hover:text-accent">Projects</a></li>
-        <li><a href="#skills" class="hover:text-accent">Skills</a></li>
-        <li><a href="#contact" class="hover:text-accent">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="container mx-auto px-6">
-    <!-- Hero -->
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center space-y-6">
-      <p class="text-accent font-semibold fade-up">Hello, I’m</p>
-      <h1 class="text-5xl md:text-7xl font-bold fade-up">Anumula Ashok</h1>
-      <p class="text-xl md:text-2xl text-gray-400 fade-up">Software Engineer – Backend & AI Systems</p>
-      <a href="#about" class="btn-outline mt-6 fade-up">Learn More</a>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="py-24 space-y-6">
-      <h2 class="text-3xl font-bold text-accent mb-8">About Me</h2>
-      <p class="max-w-2xl leading-relaxed text-gray-300 fade-up">
-        Dynamic Software Engineer with 2.5+ years of experience in backend and full-stack development, 
-        specializing in scalable microservices, AI-driven solutions, and real-time analytics. 
-        Skilled in Java, Spring Boot, Node.js, and MongoDB with advanced expertise in LangChain, RAG, and AI Agents.
-      </p>
-    </section>
-    
-    <!-- Skills -->
-    <section id="skills" class="py-24">
-      <h2 class="text-3xl font-bold text-accent mb-12">Technical Skills</h2>
-      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-
-        <!-- Backend -->
-        <div class="p-6 rounded-lg border border-gray-800 space-y-3 fade-up">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="16 3 12 7 8 3"></polyline><line x1="12" y1="21" x2="12" y2="17"></line></svg>
-          <h3 class="text-xl font-bold">Backend</h3>
-          <p class="text-gray-400">Java, Spring Boot, Node.js, REST APIs, Microservices</p>
-        </div>
-
-        <!-- Databases -->
-        <div class="p-6 rounded-lg border border-gray-800 space-y-3 fade-up">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19C3 20.6569 7.02944 22 12 22C16.9706 22 21 20.6569 21 19V5"></path><path d="M3 12C3 13.6569 7.02944 15 12 15C16.9706 15 21 13.6569 21 12"></path></svg>
-          <h3 class="text-xl font-bold">Databases</h3>
-          <p class="text-gray-400">MongoDB, MySQL, NoSQL</p>
-        </div>
-        
-        <!-- Frontend -->
-        <div class="p-6 rounded-lg border border-gray-800 space-y-3 fade-up">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="12" x2="12" y2="12"></line><line x1="8" y1="8" x2="8" y2="8"></line><line x1="16" y1="8" x2="16" y2="8"></line></svg>
-          <h3 class="text-xl font-bold">Frontend</h3>
-          <p class="text-gray-400">React, HTML, CSS, JavaScript</p>
-        </div>
-
-        <!-- AI & Tools -->
-        <div class="p-6 rounded-lg border border-gray-800 space-y-3 fade-up">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-          <h3 class="text-xl font-bold">AI & Tools</h3>
-          <p class="text-gray-400">LangChain, RAG, Tavily, Pinecone, ChatGPT</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="py-24">
-      <h2 class="text-3xl font-bold text-accent mb-12">Projects</h2>
-      <div class="grid gap-8 md:grid-cols-2">
-        <div class="p-6 rounded-lg border border-gray-800 fade-up">
-          <h3 class="text-xl font-bold">AI-Powered Reporting Engine</h3>
-          <p class="text-gray-400 mt-2">Engineered modular reporting system with 15+ charts, integrated with GA4 for real-time insights.</p>
-          <div class="mt-4 flex space-x-4">
-            <a href="#" class="btn-outline text-sm">Live Demo</a>
-            <a href="#" class="btn-outline text-sm">GitHub</a>
-          </div>
-        </div>
-        <div class="p-6 rounded-lg border border-gray-800 fade-up">
-          <h3 class="text-xl font-bold">Prompt-to-Chart System</h3>
-          <p class="text-gray-400 mt-2">Natural language → visualization using AI agents. Simplifies reporting for non-technical users.</p>
-          <div class="mt-4 flex space-x-4">
-            <a href="#" class="btn-outline text-sm">Live Demo</a>
-            <a href="#" class="btn-outline text-sm">GitHub</a>
-          </div>
-        </div>
-        <div class="p-6 rounded-lg border border-gray-800 fade-up">
-          <h3 class="text-xl font-bold">AI Agents for Data Analytics</h3>
-          <p class="text-gray-400 mt-2">Automated agents for widget creation, predictive analysis, and funnel stage optimization.</p>
-          <div class="mt-4 flex space-x-4">
-            <a href="#" class="btn-outline text-sm">Live Demo</a>
-            <a href="#" class="btn-outline text-sm">GitHub</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-24 text-center">
-      <h2 class="text-3xl font-bold text-accent mb-12">Get in Touch</h2>
-      <p class="text-gray-400 mb-8 fade-up">Interested in working together or have a question? Reach out below:</p>
-      <div class="flex justify-center space-x-6 fade-up">
-        <!-- Formspree Contact Form -->
-        <form action="https://formspree.io/f/YOUR_FORMSPREE_FORM_ID" method="POST" class="max-w-xl mx-auto w-full space-y-4">
-          <div>
-            <label for="name" class="sr-only">Name</label>
-            <input type="text" name="name" id="name" placeholder="Your Name" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent">
-          </div>
-          <div>
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" name="_replyto" id="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent">
-          </div>
-          <div>
-            <label for="message" class="sr-only">Message</label>
-            <textarea name="message" id="message" rows="5" placeholder="Your Message" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
-          </div>
-          <button type="submit" class="w-full btn-outline font-bold">Send Message</button>
-        </form>
-      </div>
-
-      <div class="flex justify-center space-x-6 mt-12 fade-up">
-        <a href="mailto:anumulaashok85@gmail.com" class="hover:text-accent" aria-label="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        </a>
-        <a href="https://github.com/Anumulaashok" target="_blank" class="hover:text-accent" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 3c0-.98-.66-1.92-1.94-2.27A2.99 2.99 0 0 0 16 0c-1.63 0-3.23.94-4.5 2.1-1.27-1.16-2.87-2.1-4.5-2.1A2.99 2.99 0 0 0 3.09.73C1.81 1.08 1.15 2.02 1.15 3c0 1.95 2.15 4.3 6.44 7-.84.85-1.94 1.25-2.61 1.54L2.5 14v1.87a3.37 3.37 0 0 0 .94 2.61c-3.14.35-6.44 1.54-6.44 7A5.44 5.44 0 0 0 0 19.23 5.07 5.07 0 0 0 .09 21c0 .98.66 1.92 1.94 2.27A2.99 2.99 0 0 0 8 24c1.63 0 3.23-.94 4.5-2.1l1.27 1.16c1.27-1.16 2.87-2.1 4.5-2.1z"></path></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/ashoksmart143" target="_blank" class="hover:text-accent" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="py-6 text-center text-gray-500 border-t border-gray-800">
-    © 2025 Anumula Ashok
-  </footer>
-
-  <script>
-    // fade-in on scroll
-    const elements = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
-      });
-    }, { threshold: 0.1 });
-
-    elements.forEach(el => observer.observe(el));
-  </script>
+	<div class="main-bg">
+		<div class="canvas"><canvas class="canvas-2"></canvas></div>
+	</div>
+	<section class="about" id="about">
+		<h2 class="about__heading section-heading">About</h2>
+		<div class="about__content">
+			<div class="profile">
+				<div class="profile__picture"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 482.9 482.9"
+						style="enable-background:new 0 0 482.9 482.9" xml:space="preserve" height="100%"
+						stroke="rgb(26, 26, 26)" stroke-width="16">
+						<g>
+							<path fill="url(#gradient-1)" d="M239.7,260.2c0.5,0,1,0,1.6,0c0.2,0,0.4,0,0.6,0c0.3,0,0.7,0,1,0c29.3-0.5,53-10.8,70.5-30.5
+  			c38.5-43.4,32.1-117.8,31.4-124.9c-2.5-53.3-27.7-78.8-48.5-90.7C280.8,5.2,262.7,0.4,242.5,0h-0.7c-0.1,0-0.3,0-0.4,0h-0.6
+  			c-11.1,0-32.9,1.8-53.8,13.7c-21,11.9-46.6,37.4-49.1,91.1c-0.7,7.1-7.1,81.5,31.4,124.9C186.7,249.4,210.4,259.7,239.7,260.2z
+  			 M164.6,107.3c0-0.3,0.1-0.6,0.1-0.8c3.3-71.7,54.2-79.4,76-79.4h0.4c0.2,0,0.5,0,0.8,0c27,0.6,72.9,11.6,76,79.4
+  			c0,0.3,0,0.6,0.1,0.8c0.1,0.7,7.1,68.7-24.7,104.5c-12.6,14.2-29.4,21.2-51.5,21.4c-0.2,0-0.3,0-0.5,0l0,0c-0.2,0-0.3,0-0.5,0
+  			c-22-0.2-38.9-7.2-51.4-21.4C157.7,176.2,164.5,107.9,164.6,107.3z"></path>
+							<path fill="url(#gradient-2)" d="M446.8,383.6c0-0.1,0-0.2,0-0.3c0-0.8-0.1-1.6-0.1-2.5c-0.6-19.8-1.9-66.1-45.3-80.9c-0.3-0.1-0.7-0.2-1-0.3
+  			c-45.1-11.5-82.6-37.5-83-37.8c-6.1-4.3-14.5-2.8-18.8,3.3c-4.3,6.1-2.8,14.5,3.3,18.8c1.7,1.2,41.5,28.9,91.3,41.7
+  			c23.3,8.3,25.9,33.2,26.6,56c0,0.9,0,1.7,0.1,2.5c0.1,9-0.5,22.9-2.1,30.9c-16.2,9.2-79.7,41-176.3,41
+  			c-96.2,0-160.1-31.9-176.4-41.1c-1.6-8-2.3-21.9-2.1-30.9c0-0.8,0.1-1.6,0.1-2.5c0.7-22.8,3.3-47.7,26.6-56
+  			c49.8-12.8,89.6-40.6,91.3-41.7c6.1-4.3,7.6-12.7,3.3-18.8c-4.3-6.1-12.7-7.6-18.8-3.3c-0.4,0.3-37.7,26.3-83,37.8
+  			c-0.4,0.1-0.7,0.2-1,0.3c-43.4,14.9-44.7,61.2-45.3,80.9c0,0.9,0,1.7-0.1,2.5c0,0.1,0,0.2,0,0.3c-0.1,5.2-0.2,31.9,5.1,45.3
+  			c1,2.6,2.8,4.8,5.2,6.3c3,2,74.9,47.8,195.2,47.8s192.2-45.9,195.2-47.8c2.3-1.5,4.2-3.7,5.2-6.3
+  			C447,415.5,446.9,388.8,446.8,383.6z"></path>
+						</g>
+						<defs>
+							<linearGradient id="gradient-1" x1="0" y1="0" x2="80%" y2="80%">
+								<stop stop-color="rgb(81,162,233)" offset="0%"></stop>
+								<stop stop-color="rgb(168,120,162)" offset="100%"></stop>
+							</linearGradient>
+							<linearGradient id="gradient-2" x1="20%" y1="20%" x2="100%" y2="100%">
+								<stop stop-color="rgb(168,120,162)" offset="0%"></stop>
+								<stop stop-color="rgb(255,77,90)" offset="100%"></stop>
+							</linearGradient>
+						</defs>
+					</svg></div>
+				<p class="profile__blurb">Dynamic Software Engineer with <span class="experience"></span> years of
+					experience in backend and
+					full-stack development, specializing in scalable microservices, AI-driven solutions, and real-time
+					analytics. Proficient in Java, Spring Boot, Node.js, and MongoDB with advanced expertise in
+					LangChain, RAG, and AI Agents. Strong track record of improving system performance, designing data
+					workflows, and building AI-powered products that deliver business insights. When I'm not coding, I
+					enjoy exploring new technologies and contributing to open-source projects.</p>
+			</div>
+			<div class="skills">
+				<div class="skills__row">
+					<div class="skills__item skills__item--html"><img src="images/java.png" alt="">
+						<div class="skills__item-name">JAVA</div>
+					</div>
+					<div class="skills__item skills__item--react"><img src="images/springboot.jpg" alt="">
+						<div class="skills__item-name">SPRING BOOT</div>
+					</div>
+					<div class="skills__item skills__item--npm"><img
+							src="images/node.94a06c4b9dd29e984501e6407e77a918.png" alt="">
+						<div class="skills__item-name">NODE.JS</div>
+					</div>
+				</div>
+				<div class="skills__row">
+					<div class="skills__item skills__item--js"><img
+							src="images/mongo.41ae1969f341d30268a13d57846efcc6.png" alt="">
+						<div class="skills__item-name">MONGODB</div>
+					</div>
+					<div class="skills__item skills__item--css"><img src="images/sql logo.png" alt="">
+						<div class="skills__item-name">MYSQL</div>
+					</div>
+					<div class="skills__item skills__item--python"><img
+							src="images/react.cb15bfce2a9004ce61c5f79f805b067b.png" alt="">
+						<div class="skills__item-name">REACT</div>
+					</div>
+					<div class="skills__item skills__item--git"><img
+							src="images/git.3092b5991e8accb9e7c36817c048a8d5.png" alt="">
+						<div class="skills__item-name">GIT</div>
+					</div>
+				</div>
+				<div class="skills__row">
+					<div class="skills__item skills__item--sass"><img
+							src="images/js.f8a28e905c78dadb79434b7ceebd52a0.png" alt="">
+						<div class="skills__item-name">JAVASCRIPT</div>
+					</div>
+					<div class="skills__item skills__item--webpack"><img
+							src="images/html.6aa56206be02cf6404844871df1d2da6.png" alt="">
+						<div class="skills__item-name">HTML</div>
+					</div>
+					<div class="skills__item skills__item--r"><img src="images/css.0ce0f0a2b4c4aa34b64c40e5278af3d1.png"
+							alt="">
+						<div class="skills__item-name">CSS</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="projects" id="projects">
+		<h2 class="projects__heading section-heading">Projects</h2>
+		<div class="projects__timeline"></div>
+		<div class="project project-left">
+			<div class="project__image-container weather">
+				<div class="project__image-image"><img src="components/headphonezone1.png" alt=""></div>
+			</div>
+			<div class="project__info">
+				<h3 class="project__title">AI-Powered Reporting Engine<br>Revlitix</h3>
+				<p class="project__description">Developed modular reporting engine with 15+ dynamic charts. Integrated
+					with GA4 for real-time analytics. Delivered dashboards improving decision-making for marketing &
+					product teams.</p><a href="https://github.com/Anumulaashok" target="_blank">
+					<div class="project__live-2">learn more</div>
+				</a>
+			</div>
+		</div>
+		<div class="project project-right">
+			<div class="project__info">
+				<h3 class="project__title">Prompt-to-Chart System<br>Revlitix</h3>
+				<p class="project__description">Built natural language → visualization system with AI agents. Enabled
+					business users to generate charts & reports without technical queries.</p><a
+					href="https://github.com/Anumulaashok" target="_blank">
+					<div class="project__live-2">learn more</div>
+				</a>
+			</div>
+			<div class="project__image-container todo">
+				<div class="project__image-image"><img src="components/shopbop1.png" alt=""></div>
+			</div>
+		</div>
+		<div class="project project-left">
+			<div class="project__image-container retro">
+				<div class="project__image-image"><img src="components/headphonezone1.png" alt=""></div>
+			</div>
+			<div class="project__info">
+				<h3 class="project__title">Headphone Zone<br>E-commerce Website</h3>
+				<p class="project__description">A fully responsive e-commerce website built with HTML, CSS, and
+					JavaScript.</p><a href="https://anumulaashokportfolio.netlify.app/" target="_blank">
+					<div class="project__live-2">Live app</div>
+				</a><a href="https://github.com/Anumulaashok" target="_blank">
+					<div class="project__live-2">learn more</div>
+				</a>
+			</div>
+		</div>
+		<div class="project project-right">
+			<div class="project__info">
+				<h3 class="project__title">Shopbop<br>Online Shopping Website</h3>
+				<p class="project__description">Online shopping website for men & women built with HTML, CSS, and
+					JavaScript.</p><a href="https://anumulaashokportfolio.netlify.app/" target="_blank">
+					<div class="project__live-2">live app</div>
+				</a><a href="https://github.com/Anumulaashok" target="_blank">
+					<div class="project__live-2">learn more</div>
+				</a>
+			</div>
+			<a href="https://anumulaashokportfolio.netlify.app/" target="_blank">
+				<div class="project__image-container todo">
+					<div class="project__image-image"><img src="components/shopbop2.png" alt=""></div>
+				</div>
+			</a>
+		</div>
+	</section>
+	<section class="contact" id="contact">
+		<h2 class="contact__heading section-heading">Contact</h2>
+		<p class="contact__text" style="margin-bottom: 2rem; line-height: 1.7; text-align: center; color: #ffff;">
+			Interested in collaborating or have any questions?<br>
+			<span style="display: inline-block; margin: 0.5em 0;">
+				Feel free to reach out!<br>
+				<strong style="color: #5172e9;">+91 8179463267</strong>
+			</span>
+			<br>
+			You can also contact me through any of the social media platforms below.
+		</p>
+		<form class="contact__form" action="https://formspree.io/f/xdoprgpv" method="POST"><input
+				class="contact__form-name" name="name" placeholder="Name"> <input class="contact__form-email"
+				type="email" name="_replyto" placeholder="Email"> <textarea class="contact__form-message" name="message"
+				placeholder="Message"></textarea>
+			<div class="contact__form-error-submit">
+				<div class="form-error">
+					<div class="form-error__name">Please enter your name.</div>
+					<div class="form-error__email">Please enter a valid email.</div>
+					<div class="form-error__msg">Please enter a message.</div>
+				</div><button type="button" class="contact__form-submit-2 project__live-2"
+					id="form-submit">Submit</button>
+			</div>
+		</form>
+	</section>
+	<footer class="footer"><a href="#hero">
+			<div class="return-home"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100%"
+					viewBox="0 0 24 24">
+					<title></title>
+					<path fill="#fafafa"
+						d="M17.707 10.293l-5-5c-0.391-0.391-1.024-0.391-1.414 0l-5 5c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l4.293-4.293 4.293 4.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414zM17.707 17.293l-5-5c-0.391-0.391-1.024-0.391-1.414 0l-5 5c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l4.293-4.293 4.293 4.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414z">
+					</path>
+				</svg></div>
+		</a>
+		<div class="socials"><a href="https://github.com/Anumulaashok" target="_blank">
+				<div class="socials__github"><img src="images/github-logo.d03ce87cf6b5a432c44f847eefec1204.png" alt="">
+				</div>
+			</a><a href="mailto:anumulaashok85@gmail.com" target="_blank">
+				<div class="socials__email"><img src="images/mail.4f2db89278f9ad3abef627211b414574.png" alt=""></div>
+			</a><a href="https://www.linkedin.com/in/ashoksmart143" target="_blank">
+				<div class="socials__email"><img src="components/link.jpg" alt=""></div>
+			</a><a href="https://www.instagram.com/ashoksmart_u_r_heart" target="_blank">
+				<div class="socials__email"><img src="components/instagram.png" alt=""></div>
+			</a></div>
+		<p class="copyright">ANUMULA ASHOK ©2025</p>
+	</footer>
 </body>
+<script>
+	const experience = document.querySelector(".experience");
+	const startDate = new Date(2022, 12); // December 2022 (month is 0-based)
+	const currentDate = new Date();
+
+	const years = currentDate.getFullYear() - startDate.getFullYear();
+	const months = currentDate.getMonth() - startDate.getMonth();
+
+	let totalMonths = (years * 12) + months;
+	const displayYears = Math.floor(totalMonths / 12);
+	const displayMonths = totalMonths % 12;
+
+	let experienceText = "";
+	if (displayYears > 0) {
+		experienceText += displayYears + ".";
+	}
+	if (displayMonths > 0) {
+		experienceText += displayMonths + "+";
+	}
+
+	experience.textContent = experienceText;
+
+	// Custom Cursor
+const cursor = document.querySelector(".circle-cursor--outer");
+let links = document.querySelectorAll("a, button, .project__image-container");
+
+// Update cursor position
+document.addEventListener("mousemove", (e) => {
+    requestAnimationFrame(() => {
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+});
+
+// Add hover effect on interactive elements
+links.forEach((link) => {
+    link.addEventListener("mouseenter", () => cursor.classList.add("active"));
+    link.addEventListener("mouseleave", () => cursor.classList.remove("active"));
+});
+
+// Keep cursor visible when scrolling
+document.addEventListener("scroll", (e) => {
+    requestAnimationFrame(() => {
+        cursor.style.display = "block";
+    });
+});
+</script>
+
 </html>
