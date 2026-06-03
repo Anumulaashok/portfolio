@@ -1,68 +1,36 @@
-# portfolio
-Enthusiastic Full Stack Web Developer
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Hi there, I'm a Full Stack Web Developer with a passion for learning new technologies and building quality websites and applications using Java and JavaScript. I am highly adaptable and always strive to maintain the performance, quality, and responsiveness of my applications while utilizing my current skillset.
-Education
+## Getting Started
 
-    Full Stack Web Development, Masai School (Full-Time)
-        Feb 2022 – Present | Remote
-    Bachelor of Commerce, Government Degree College
-        Jun 2017 – Jan 2021 | Hyderabad, India
+First, run the development server:
 
-Professional Experience
-Farm Sales Officer, L&T Finance Limited
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-    Aug 2021 – Mar 2022 | Medak, India
-    Monitored and identified clients and maintained client base through efficient interactions with clients
-    Analyzed all information to develop strategies to ensure the client's financial objectives
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Technical Skills
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-    Java
-    Spring
-    SQL
-    Data Structures and Algorithms
-    JavaScript
-    HTML & CSS
-    Debugging
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Projects
-Online Plant Nursery Application
+## Learn More
 
-An e-commerce website Rest API is used for selling and buying plants and seeds.
+To learn more about Next.js, take a look at the following resources:
 
-Tech stack: JAVA | Spring Boot | Spring data JPA | MySQL | Hibernate
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Features: Storing Customer and admin login credentials and storing planter and plant, seeds details in an easy and secure accessible manner, with structured layers, and handling exceptions properly and giving validation to all input data
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-Areas of responsibility: Built Customer and admin login API and handled the control layer of all other API with exception handling
+## Deploy on Vercel
 
-A collaborative project built by a team of 4 within 4 days.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-GitHub
-Headphonezone, Front End Developer
-
-An e-commerce website used for selling headphones and other audio equipment.
-
-Tech stack: HTML | CSS | JavaScript
-
-Features: Login and Signup, Product page with filter feature, product detailed view page, Cart section with remove product feature, Payment page
-
-Areas of responsibility: Built product detailed view page and product filtering on the product page.
-
-A collaborative project built by a team of 6 within 5 days.
-
-GitHub
-Soft Skills
-
-    Teamwork
-    Adaptability
-    Remote Collaboration
-    Proactive
-
-Achievements
-
-    Cascading Style Sheets
-        Secured top 5% among the Participants in the LinkedIn for CSS Assessments.
-
-Thanks for taking the time to check out my portfolio. If you'd like to get in touch, feel free to contact me at anumulaashok85@gmail.com or connect with me on https://www.linkedin.com/in/ashoksmart143/.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
