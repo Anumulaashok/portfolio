@@ -1,0 +1,9 @@
+# Static Next.js export for Netlify
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
