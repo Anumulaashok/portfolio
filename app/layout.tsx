@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { PortfolioShell } from "@/components/PortfolioShell";
+import Script from "next/script";
 
 const siteUrl = "https://anumulaashok.dev";
 
@@ -85,6 +86,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-VNLJB0DHR4"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-VNLJB0DHR4');`}
+        </Script>
       </head>
       <body className="antialiased">
         <PortfolioShell>{children}</PortfolioShell>
