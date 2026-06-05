@@ -13,20 +13,23 @@ const skills = [
   "Spring Boot",
   "Node.js",
   "React",
-  "TypeScript",
   "MongoDB",
+  "ClickHouse",
   "PostgreSQL",
   "LangChain",
   "RAG",
+  "Temporal",
+  "RabbitMQ",
+  "Redis",
+  "Kafka",
   "AI Agents",
   "Microservices",
-  "REST APIs",
 ];
 
 const stats = [
   { label: "Years Experience", value: 3, suffix: "+" },
-  { label: "Projects Delivered", value: 15, suffix: "+" },
-  { label: "Technologies", value: 20, suffix: "+" },
+  { label: "Chart Types Built", value: 15, suffix: "+" },
+  { label: "Platform Integrations", value: 12, suffix: "+" },
 ];
 
 function CountUp({
@@ -86,17 +89,20 @@ export function AboutSection() {
           className="space-y-6 text-[var(--text-secondary)]"
           >
             <p>
-              Dynamic Software Engineer with 3+ years of experience building
-              scalable backend systems, AI-driven solutions, and real-time
-              analytics platforms. I specialize in turning complex business
-              requirements into reliable, high-performance software.
+              Full Stack Software Engineer with 3+ years of experience building
+              scalable, data-driven applications. Skilled in Java, Spring Boot,
+              Node.js, React, MongoDB, and ClickHouse—with hands-on work in
+              microservices, high-performance backends, production monitoring,
+              and large-scale data pipelines.
             </p>
             <p>
-              Proficient across the full stack with deep expertise in Java,
-              Spring Boot, Node.js, and modern AI tooling including LangChain,
-              RAG pipelines, and autonomous AI agents. Passionate about system
-              performance, data workflows, and products that deliver measurable
-              business impact.
+              I currently work at RAGA AI as a Software Development Engineer,
+              building Temporal workflows and multi-tenant data systems. At
+              Revlitix, I grew from Associate Software Engineer to Software
+              Engineer, shipping reporting platforms, LangChain AI agents, and
+              12+ Ad, CRM, and analytics integrations. Focused on
+              reliable systems, strict code quality, and impactful user
+              experiences.
             </p>
           </motion.div>
 

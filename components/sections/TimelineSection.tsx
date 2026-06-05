@@ -10,31 +10,45 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const phases = [
   {
-    year: "2019 — 2021",
-    title: "Learning & Foundation",
+    year: "2017 — 2021",
+    title: "Bachelor of Commerce",
     description:
-      "Built strong fundamentals in computer science, Java, and web development through coursework and personal projects.",
+      "Completed B.Com at Government Degree College, Hyderabad—building analytical and business foundations.",
     side: "left" as const,
   },
   {
-    year: "Dec 2022",
-    title: "First Professional Role",
+    year: "2022",
+    title: "Masai School — Full Stack",
     description:
-      "Joined Revlitix as Software Engineer, contributing to backend APIs, full-stack features, and production systems.",
+      "Intensive full-time program in Java, Spring Boot, MySQL, Hibernate, and React.js with deployed REST API projects.",
     side: "right" as const,
   },
   {
-    year: "2023 — 2024",
-    title: "AI Journey",
+    year: "Dec 2022 — Dec 2023",
+    title: "Revlitix — Associate Software Engineer",
     description:
-      "Pioneered AI agent development, RAG pipelines, and intelligent automation — shaping the company's AI product direction.",
+      "One year as Associate Software Engineer—15+ chart reporting ecosystem, ETL across 12+ platforms, and ~99% faster data processing.",
     side: "left" as const,
   },
   {
-    year: "2025+",
+    year: "Dec 2023 — Earlier",
+    title: "Revlitix — Software Engineer",
+    description:
+      "Promoted to Software Engineer—LangChain AI agents, ClickHouse analytics, 100K+ scale workflows, and full-stack delivery.",
+    side: "right" as const,
+  },
+  {
+    year: "Present",
+    title: "RAGA AI — Software Development Engineer",
+    description:
+      "Currently at RAGA AI—Temporal workflow orchestration, Collections/Lab Reports ownership, and multi-tenant PostgreSQL configs.",
+    side: "left" as const,
+  },
+  {
+    year: "Ahead",
     title: "Future Goals",
     description:
-      "Deepening expertise in distributed systems, AI infrastructure, and building products that scale globally.",
+      "Deepening distributed systems, AI infrastructure, and products that scale globally with measurable business impact.",
     side: "right" as const,
   },
 ];

@@ -5,23 +5,26 @@ import { PortfolioShell } from "@/components/PortfolioShell";
 const siteUrl = "https://anumulaashok.dev";
 
 export const metadata: Metadata = {
-  title: "Ashok Anumula | Backend & AI Agent Engineer",
+  title: "Ashok Anumula | Full Stack Software Engineer",
   description:
-    "Portfolio of Ashok Anumula — Backend Engineer and AI Agent Engineer building scalable systems, intelligent agents, and data-driven products.",
+    "Portfolio of Ashok Anumula — Software Development Engineer at RAGA AI. Previously at Revlitix. Java, Node.js, React, LangChain, RAG, Temporal, ClickHouse, and scalable data platforms.",
   keywords: [
     "Ashok Anumula",
-    "Backend Engineer",
-    "AI Agent Engineer",
-    "Software Engineer",
+    "Full Stack Software Engineer",
+    "Revlitix",
+    "RAGA AI",
     "LangChain",
+    "RAG",
+    "Temporal",
+    "ClickHouse",
     "Spring Boot",
     "Node.js",
   ],
   authors: [{ name: "Ashok Anumula" }],
   openGraph: {
-    title: "Ashok Anumula | Backend & AI Agent Engineer",
+    title: "Ashok Anumula | Full Stack Software Engineer",
     description:
-      "Building scalable backend systems, AI agents, and data-driven products.",
+      "Building scalable data-driven apps, AI agents, and analytics platforms at Revlitix and RAGA AI.",
     url: siteUrl,
     siteName: "Ashok Anumula Portfolio",
     locale: "en_US",
@@ -31,15 +34,15 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Ashok Anumula — Backend & AI Agent Engineer",
+        alt: "Ashok Anumula — Full Stack Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ashok Anumula | Backend & AI Agent Engineer",
+    title: "Ashok Anumula | Full Stack Software Engineer",
     description:
-      "Building scalable backend systems, AI agents, and data-driven products.",
+      "Building scalable data-driven apps, AI agents, and analytics platforms at Revlitix and RAGA AI.",
   },
   robots: {
     index: true,
@@ -51,7 +54,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Ashok Anumula",
-  jobTitle: "Backend Engineer | AI Agent Engineer",
+  jobTitle: "Full Stack Software Engineer",
   url: siteUrl,
   sameAs: [
     "https://www.linkedin.com/in/ashoksmart143",
@@ -64,12 +67,16 @@ const personJsonLd = {
     "Node.js",
     "React",
     "LangChain",
+    "RAG",
+    "Temporal",
+    "ClickHouse",
+    "MongoDB",
     "AI Agents",
     "Microservices",
   ],
   worksFor: {
     "@type": "Organization",
-    name: "Revlitix",
+    name: "RAGA AI",
   },
 };
 

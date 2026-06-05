@@ -19,6 +19,10 @@ const socials = [
     label: "Email",
     href: "mailto:anumulaashok85@gmail.com",
   },
+  {
+    label: "Phone",
+    href: "tel:+918179463267",
+  },
 ];
 
 export function ContactSection() {

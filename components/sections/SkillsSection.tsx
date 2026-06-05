@@ -16,24 +16,20 @@ const categories = [
       "Java",
       "Spring Boot",
       "Node.js",
-      "Express",
+      "Kafka",
+      "RabbitMQ",
+      "Redis",
+      "Hazelcast",
       "REST APIs",
       "Microservices",
-      "MongoDB",
-      "PostgreSQL",
+      "JWT",
+      "OAuth2",
     ],
   },
   {
     title: "Frontend",
     icon: "◈",
-    skills: [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "HTML/CSS",
-      "TailwindCSS",
-      "Framer Motion",
-    ],
+    skills: ["React.js", "JavaScript", "HTML", "CSS", "TypeScript", "Next.js"],
   },
   {
     title: "AI & Data",
@@ -42,10 +38,13 @@ const categories = [
       "LangChain",
       "RAG",
       "AI Agents",
-      "OpenAI API",
-      "Vector DBs",
-      "Python",
-      "Data Pipelines",
+      "Tavily",
+      "Pinecone",
+      "Temporal",
+      "MongoDB",
+      "MySQL",
+      "ClickHouse",
+      "NoSQL",
     ],
   },
   {
@@ -53,13 +52,14 @@ const categories = [
     icon: "◎",
     skills: [
       "Git",
-      "Docker",
-      "AWS",
       "CI/CD",
-      "Linux",
-      "Postman",
-      "Jira",
-      "Agile",
+      "Docker",
+      "Grafana",
+      "GCP",
+      "Kibana",
+      "System Monitoring",
+      "GitHub Copilot",
+      "Cursor",
     ],
   },
 ];
@@ -93,30 +93,30 @@ export function SkillsSection() {
                     : ""
                 }`}
               >
-              <GlowCard className="h-full border-0 bg-transparent">
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="text-2xl" aria-hidden>
-                    {cat.icon}
-                  </span>
-                  <h3 className="font-display text-xl font-semibold">
-                    {cat.title}
-                  </h3>
-                </div>
-                <ul className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill) => (
-                    <li
-                      key={skill}
-                      className={`rounded-full px-3 py-1.5 text-sm transition-all duration-300 ${
-                        activeIndex === index
-                          ? "border border-[var(--accent-violet)] bg-[rgba(139,92,246,0.1)] text-[var(--text-primary)]"
-                          : "border border-[var(--border)] text-[var(--text-secondary)]"
-                      }`}
-                    >
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </GlowCard>
+                <GlowCard className="h-full border-0 bg-transparent">
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="text-2xl" aria-hidden>
+                      {cat.icon}
+                    </span>
+                    <h3 className="font-display text-xl font-semibold">
+                      {cat.title}
+                    </h3>
+                  </div>
+                  <ul className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill) => (
+                      <li
+                        key={skill}
+                        className={`rounded-full px-3 py-1.5 text-sm transition-all duration-300 ${
+                          activeIndex === index
+                            ? "border border-[var(--accent-violet)] bg-[rgba(139,92,246,0.1)] text-[var(--text-primary)]"
+                            : "border border-[var(--border)] text-[var(--text-secondary)]"
+                        }`}
+                      >
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </GlowCard>
               </GlareHover>
             </motion.div>
           ))}
