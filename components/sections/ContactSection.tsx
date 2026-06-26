@@ -19,6 +19,14 @@ const socials = [
     label: "Email",
     href: "mailto:anumulaashok85@gmail.com",
   },
+  {
+    label: "Phone",
+    href: "tel:+918179463267",
+  },
+  {
+    label: "Resume",
+    href: "https://drive.google.com/file/d/12_JFyz8pS60h2bOqEBe8CWg5xdMOzFdm/view?usp=sharing",
+  },
 ];
 
 export function ContactSection() {
