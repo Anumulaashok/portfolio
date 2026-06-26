@@ -19,6 +19,11 @@ const socials = [
     label: "Email",
     href: "mailto:anumulaashok85@gmail.com",
   },
+  {
+    label: "Resume",
+    href: "/resume.pdf",
+    download: "Ashok_Resume.pdf",
+  },
 ];
 
 export function ContactSection() {
@@ -49,6 +54,7 @@ export function ContactSection() {
                 href={social.href}
                 variant="secondary"
                 className="min-w-[140px]"
+                download={social.download}
               >
                 {social.label}
               </MagneticButton>
