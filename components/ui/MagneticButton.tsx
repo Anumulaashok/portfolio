@@ -53,7 +53,7 @@ export function MagneticButton({
   const motionStyle = reducedMotion ? undefined : { x: springX, y: springY };
 
   if (href) {
-    const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+    const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
     return (
       <motion.span
         style={motionStyle}
