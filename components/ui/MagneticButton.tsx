@@ -11,6 +11,7 @@ type MagneticButtonProps = {
   onClick?: () => void;
   className?: string;
   variant?: "primary" | "secondary";
+  download?: boolean | string;
 };
 
 export function MagneticButton({
@@ -19,6 +20,7 @@ export function MagneticButton({
   onClick,
   className = "",
   variant = "primary",
+  download,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
@@ -54,6 +56,27 @@ export function MagneticButton({
 
   if (href) {
     const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+    
+    if (download) {
+      return (
+        <motion.span
+          style={motionStyle}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="inline-block"
+        >
+          <a
+            ref={ref as React.RefObject<HTMLAnchorElement>}
+            href={href}
+            className={combinedClass}
+            download={download}
+          >
+            {children}
+          </a>
+        </motion.span>
+      );
+    }
+
     return (
       <motion.span
         style={motionStyle}

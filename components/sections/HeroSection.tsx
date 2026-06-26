@@ -67,6 +67,9 @@ export function HeroSection() {
           <MagneticButton href="#projects" variant="primary">
             View Projects
           </MagneticButton>
+          <MagneticButton href="/resume.pdf" download="Ashok_Resume.pdf" variant="secondary">
+            Download CV
+          </MagneticButton>
           <MagneticButton href="#contact" variant="secondary">
             Contact Me
           </MagneticButton>
