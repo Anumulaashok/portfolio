@@ -70,6 +70,9 @@ export function HeroSection() {
           <MagneticButton href="#contact" variant="secondary">
             Contact Me
           </MagneticButton>
+          <MagneticButton href="https://drive.google.com/uc?export=download&id=12_JFyz8pS60h2bOqEBe8CWg5xdMOzFdm" variant="secondary">
+            Download Resume
+          </MagneticButton>
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
