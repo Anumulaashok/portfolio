@@ -25,7 +25,7 @@ const socials = [
   },
   {
     label: "Resume",
-    href: "https://drive.google.com/file/d/12_JFyz8pS60h2bOqEBe8CWg5xdMOzFdm/view?usp=sharing",
+    href: "https://drive.google.com/uc?export=download&id=12_JFyz8pS60h2bOqEBe8CWg5xdMOzFdm",
   },
 ];
 
