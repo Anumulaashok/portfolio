@@ -8,6 +8,17 @@ import { sectionViewport } from "@/lib/viewport";
 const projects = [
   {
     number: "01",
+    title: "People’s Youth Management System",
+    description:
+      "Solo-developed and delivered a youth organization management app for real client operations, including admin/member dashboards, payment and loan tracking, charity records, PDF receipts, and reports.",
+    tags: ["Next.js", "Prisma", "Redis", "Vercel", "Role-based Access"],
+    gradient: "from-amber-600/40 via-orange-900/30 to-transparent",
+    liveUrl: "https://youth-managment.vercel.app/admin/dashboard",
+    repoLabel: "Private client repo",
+    repoUrl: "https://github.com/Anumulaashok/youth-managment",
+  },
+  {
+    number: "02",
     title: "AI Agent Platform",
     description:
       "Multi-agent orchestration platform with LangChain, enabling autonomous task execution, tool use, and conversational workflows at scale.",
@@ -15,7 +26,7 @@ const projects = [
     gradient: "from-violet-600/40 via-purple-900/30 to-transparent",
   },
   {
-    number: "02",
+    number: "03",
     title: "Analytics Engine",
     description:
       "Real-time analytics pipeline processing high-volume event streams with custom dashboards and actionable business intelligence.",
@@ -23,7 +34,7 @@ const projects = [
     gradient: "from-cyan-600/40 via-blue-900/30 to-transparent",
   },
   {
-    number: "03",
+    number: "04",
     title: "Workflow Builder",
     description:
       "Visual workflow automation tool allowing teams to design, deploy, and monitor complex business processes without code.",
@@ -31,7 +42,7 @@ const projects = [
     gradient: "from-fuchsia-600/40 via-violet-900/30 to-transparent",
   },
   {
-    number: "04",
+    number: "05",
     title: "Stock Market AI Assistant",
     description:
       "AI-powered financial assistant using RAG and market data APIs to deliver personalized insights and portfolio analysis.",
@@ -84,6 +95,30 @@ export function ProjectsSection() {
                       </li>
                     ))}
                   </ul>
+                  {(project.liveUrl || project.repoUrl) && (
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-full border border-[var(--accent-violet)] px-4 py-2 text-sm font-medium text-[var(--accent-violet)] transition hover:bg-[var(--accent-violet)] hover:text-white"
+                        >
+                          Live demo
+                        </a>
+                      )}
+                      {project.repoUrl && (
+                        <a
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-full border border-[var(--border)] px-4 py-2 text-sm text-[var(--text-primary)] transition hover:border-[var(--accent-violet)] hover:text-[var(--accent-violet)]"
+                        >
+                          {project.repoLabel ?? "View code"}
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </article>
