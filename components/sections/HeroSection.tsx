@@ -36,7 +36,9 @@ export function HeroSection() {
             className="mb-4 font-display text-2xl font-bold uppercase tracking-[0.15em] text-[var(--text-secondary)] md:text-4xl"
           >
             <GradientText className="font-display text-2xl font-bold uppercase tracking-[0.15em] md:text-4xl">
-              Backend Engineer | AI Agent Engineer
+              Backend Engineer
+              <br />
+              AI Agent Engineer
             </GradientText>
           </motion.p>
           <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
