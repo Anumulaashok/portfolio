@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BlurText } from "@/components/reactbits/BlurText";
 import { GradientText } from "@/components/reactbits/GradientText";
@@ -27,6 +28,21 @@ export function HeroSection() {
     >
       <GradientBlob mouseX={offset.x} mouseY={offset.y} />
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-8 h-36 w-36 overflow-hidden rounded-full border-2 border-[var(--accent-violet)] shadow-lg md:h-44 md:w-44"
+        >
+          <Image
+            src="/profile.jpg"
+            alt="Ashok"
+            width={176}
+            height={176}
+            priority
+            className="h-full w-full object-cover"
+          />
+        </motion.div>
         <motion.p
           variants={fadeInUp}
           initial="hidden"
