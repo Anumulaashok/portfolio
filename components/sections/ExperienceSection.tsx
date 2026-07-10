@@ -8,31 +8,63 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { sectionViewport } from "@/lib/viewport";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-const highlights = [
+type Role = {
+  title: string;
+  period: string;
+  highlights: string[];
+};
+
+type Employer = {
+  company: string;
+  location: string;
+  roles: Role[];
+};
+
+const employers: Employer[] = [
   {
-    title: "AI Agents & Automation",
-    description:
-      "Designed and deployed intelligent AI agents using LangChain and RAG pipelines to automate complex workflows and deliver actionable insights.",
+    company: "RAGA AI",
+    location: "Bangalore",
+    roles: [
+      {
+        title: "Software Development Engineer",
+        period: "Present",
+        highlights: [
+          "Designed and implemented Temporal-based workflow architecture orchestrating distributed workflows for data processing, integrations, retries, and fault-tolerant execution.",
+          "Owned Collections and Lab Reports modules end-to-end—architecture, workflow design, feature development, performance optimization, and production support.",
+          "Partnered with product teams to translate business requirements into scalable technical solutions delivered on schedule.",
+          "Built UI and backend services for production database/schema management with audit logging, change tracking, and automated migration tooling.",
+          "Developed multi-tenant, PostgreSQL-driven config workflows enabling dynamic behavior without code changes or redeployments.",
+        ],
+      },
+    ],
   },
   {
-    title: "Analytics & Data",
-    description:
-      "Built real-time analytics engines processing large datasets, enabling data-driven decision making across the organization.",
-  },
-  {
-    title: "Workflow Automation",
-    description:
-      "Engineered workflow builders and automation tools that reduced manual processes and improved operational efficiency.",
-  },
-  {
-    title: "Backend APIs",
-    description:
-      "Developed scalable REST APIs and microservices with Java, Spring Boot, and Node.js serving high-traffic production workloads.",
-  },
-  {
-    title: "Full-Stack Delivery",
-    description:
-      "Shipped end-to-end features with React and Node.js, collaborating across teams to deliver cohesive product experiences.",
+    company: "Revlitix India Private Limited",
+    location: "Bangalore",
+    roles: [
+      {
+        title: "Software Engineer - 1",
+        period: "Dec 2023 — Earlier",
+        highlights: [
+          "Owned the full lifecycle of a LangChain-based AI agent framework for NLP-driven chart creation and data analysis, with real-time SSE streaming for a responsive UX.",
+          "Designed fault-tolerant workflows handling 100K+ daily insertions/updates using RabbitMQ, MongoDB, and Redis caching.",
+          "Contributed to React.js frontend development, helping the team deliver 95% of sprint tasks on time.",
+          "Migrated Java microservices to Node.js and moved reporting workloads to ClickHouse, achieving ~10× faster analytics with lower infra overhead.",
+          "Owned backend code reviews so zero low-quality builds reached development, improving release reliability by ~20%.",
+          "Led cross-functional design reviews (+15% architectural compliance) and mentored junior developers on clean coding and full-cycle delivery.",
+        ],
+      },
+      {
+        title: "Associate Software Engineer",
+        period: "Dec 2022 — Dec 2023",
+        highlights: [
+          "Engineered a scalable reporting ecosystem with 15+ custom chart types powered by Java and MongoDB aggregations, plus an internal charting library.",
+          "Optimized data processing by ~99% (10 minutes → seconds per batch) via batch insertions, enhanced queries, and indexing.",
+          "Built goal tracking, pattern analysis, and scheduled reports—automating daily/weekly alerting and increasing platform traffic by ~10%.",
+          "Contributed to ETL pipelines integrating 12+ external platforms: Google, LinkedIn, Meta Ads, Salesforce, HubSpot, GA4, GSC, and more.",
+        ],
+      },
+    ],
   },
 ];
 
@@ -71,38 +103,65 @@ export function ExperienceSection() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading label="Experience" title="Where I Work" />
 
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
-          <div className="lg:sticky lg:top-32 lg:self-start">
-            <p className="text-sm text-[var(--accent-violet)]">Dec 2022 — Present</p>
-            <h3 className="mt-2 font-display text-h2 font-bold">Software Engineer</h3>
-            <p className="mt-1 text-xl text-[var(--text-secondary)]">Revlitix</p>
-            <div className="relative mt-8 hidden h-48 w-1 overflow-hidden rounded-full bg-[var(--border)] lg:block">
+        <div className="space-y-20">
+          {employers.map((employer, employerIndex) => (
+            <div
+              key={employer.company}
+              className="grid gap-12 lg:grid-cols-[1fr_1.2fr]"
+            >
               <div
-                ref={progressRef}
-                className="absolute top-0 left-0 h-full w-full origin-top scale-y-0 bg-gradient-to-b from-[var(--accent-violet)] to-[var(--accent-cyan)]"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            {highlights.map((item, index) => (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={sectionViewport}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="group border-l-2 border-[var(--border)] pl-8 transition-colors hover:border-[var(--accent-violet)]"
+                className={
+                  employerIndex === 0 ? "lg:sticky lg:top-32 lg:self-start" : ""
+                }
               >
-                <h4 className="font-display text-xl font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-violet)]">
-                  {item.title}
-                </h4>
-                <p className="mt-3 text-[var(--text-secondary)]">
-                  {item.description}
+                <p className="text-sm text-[var(--accent-violet)]">
+                  {employer.location}
                 </p>
-              </motion.article>
-            ))}
-          </div>
+                <h3 className="mt-2 font-display text-h2 font-bold">
+                  {employer.company}
+                </h3>
+                {employerIndex === 0 && (
+                  <div className="relative mt-8 hidden h-48 w-1 overflow-hidden rounded-full bg-[var(--border)] lg:block">
+                    <div
+                      ref={progressRef}
+                      className="absolute top-0 left-0 h-full w-full origin-top scale-y-0 bg-gradient-to-b from-[var(--accent-violet)] to-[var(--accent-cyan)]"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-12">
+                {employer.roles.map((role, roleIndex) => (
+                  <motion.div
+                    key={`${employer.company}-${role.title}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={sectionViewport}
+                    transition={{ delay: roleIndex * 0.05, duration: 0.5 }}
+                  >
+                    {role.period ? (
+                      <p className="text-sm text-[var(--accent-cyan)]">
+                        {role.period}
+                      </p>
+                    ) : null}
+                    <h4 className="mt-1 font-display text-xl font-semibold text-[var(--text-primary)]">
+                      {role.title}
+                    </h4>
+                    <ul className="mt-4 space-y-4 border-l-2 border-[var(--border)] pl-6">
+                      {role.highlights.map((item) => (
+                        <li
+                          key={item.slice(0, 48)}
+                          className="text-[var(--text-secondary)]"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
