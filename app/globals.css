@@ -91,6 +91,16 @@ body {
   letter-spacing: -0.03em;
 }
 
+/* Lets gradient-clipped text (GradientText) show through per-letter
+   animated spans (BlurText), since background-image/-clip don't inherit. */
+.gradient-letters,
+.gradient-letters span {
+  background-image: inherit;
+  -webkit-background-clip: inherit;
+  background-clip: inherit;
+  color: inherit;
+}
+
 .text-h1 {
   font-size: var(--text-h1);
   line-height: 1.1;

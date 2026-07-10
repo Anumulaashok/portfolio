@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BlurText } from "@/components/reactbits/BlurText";
 import { GradientText } from "@/components/reactbits/GradientText";
@@ -26,67 +27,116 @@ export function HeroSection() {
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6"
     >
       <GradientBlob mouseX={offset.x} mouseY={offset.y} />
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center text-center">
-        <motion.p
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="mb-4 font-display text-sm uppercase tracking-[0.3em] text-[var(--text-secondary)]"
-        >
-          Backend Engineer | AI Agent Engineer
-        </motion.p>
-        <h1 className="font-display text-display font-bold tracking-tight">
-          <GradientText className="font-display text-display font-bold tracking-tight">
-            <BlurText
-              text="Ashok"
-              as="span"
-              animateBy="letters"
-              delay={60}
-              triggerOnMount
-              className="inline-block"
-            />
-          </GradientText>
-        </h1>
-        <motion.p
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.3 }}
-          className="mt-6 max-w-2xl text-lg text-[var(--text-secondary)] md:text-xl"
-        >
-          Building scalable backend systems, intelligent AI agents, and
-          data-driven products that turn complex problems into elegant solutions.
-        </motion.p>
+      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <motion.p
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mb-4 font-display text-2xl font-bold uppercase tracking-[0.15em] text-[var(--text-secondary)] md:text-4xl"
+          >
+            <GradientText className="font-display text-2xl font-bold uppercase tracking-[0.15em] md:text-4xl">
+              Backend Engineer
+              <br />
+              AI Agent Engineer
+            </GradientText>
+          </motion.p>
+          <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <GradientText className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+              <BlurText
+                text="Anumula Ashok"
+                as="span"
+                animateBy="words"
+                delay={120}
+                triggerOnMount
+                className="gradient-letters inline-block"
+              />
+            </GradientText>
+          </h1>
+          <motion.p
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.3 }}
+            className="mt-6 max-w-2xl text-lg text-[var(--text-secondary)] md:text-xl"
+          >
+            Building scalable backend systems, intelligent AI agents, and
+            data-driven products that turn complex problems into elegant solutions.
+          </motion.p>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.5 }}
+            className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
+          >
+            <MagneticButton href="#projects" variant="primary">
+              View Projects
+            </MagneticButton>
+            <MagneticButton href="#contact" variant="secondary">
+              Contact Me
+            </MagneticButton>
+          </motion.div>
+        </div>
+
         <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.5 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          initial={{ opacity: 0, scale: 0.85, x: 30 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="relative mx-auto flex h-64 w-64 items-center justify-center md:h-80 md:w-80"
         >
-          <MagneticButton href="#projects" variant="primary">
-            View Projects
-          </MagneticButton>
-          <MagneticButton href="#contact" variant="secondary">
-            Contact Me
-          </MagneticButton>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-          aria-hidden
-        >
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-[var(--border)] p-2">
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="h-1.5 w-1 rounded-full bg-[var(--accent-violet)]"
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 rounded-full border border-dashed border-[var(--accent-violet)]/40"
+            aria-hidden
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-[-14px] rounded-full border border-[var(--border)]"
+            aria-hidden
+          />
+          <div className="absolute inset-6 rounded-full bg-[var(--accent-violet)]/30 blur-3xl" aria-hidden />
+          <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-[var(--accent-violet)] shadow-2xl shadow-[var(--accent-violet)]/30">
+            <Image
+              src="/profile.jpg"
+              alt="Ashok"
+              width={320}
+              height={320}
+              priority
+              className="h-full w-full object-cover"
             />
           </div>
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -right-2 -top-2 h-4 w-4 rounded-full bg-[var(--accent-violet)] shadow-lg"
+            aria-hidden
+          />
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute -bottom-3 left-4 h-3 w-3 rounded-full bg-[var(--accent-violet)]/70 shadow-lg"
+            aria-hidden
+          />
         </motion.div>
       </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute bottom-12 left-1/2 z-10 -translate-x-1/2"
+        aria-hidden
+      >
+        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-[var(--border)] p-2">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="h-1.5 w-1 rounded-full bg-[var(--accent-violet)]"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }
