@@ -39,13 +39,13 @@ export function HeroSection() {
               Backend Engineer | AI Agent Engineer
             </GradientText>
           </motion.p>
-          <h1 className="font-display text-display font-bold tracking-tight">
-            <GradientText className="font-display text-display font-bold tracking-tight">
+          <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <GradientText className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               <BlurText
-                text="Ashok"
+                text="Anumula Ashok"
                 as="span"
-                animateBy="letters"
-                delay={60}
+                animateBy="words"
+                delay={120}
                 triggerOnMount
                 className="gradient-letters inline-block"
               />
