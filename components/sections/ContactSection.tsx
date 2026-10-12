@@ -1,71 +1,71 @@
-"use client";
+import { contact, resume, site } from "@/content/profile";
+import { ContactForm } from "@/components/ui/ContactForm";
+import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
+import { Button } from "@/components/ui/Button";
 
-import { motion } from "framer-motion";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-import { BlurText } from "@/components/reactbits/BlurText";
-import { staggerContainer, staggerItem } from "@/lib/animations";
-import { sectionViewport } from "@/lib/viewport";
-
-const socials = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/ashoksmart143",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/Anumulaashok",
-  },
-  {
-    label: "Email",
-    href: "mailto:anumulaashok85@gmail.com",
-  },
-];
+const newTab = { target: "_blank", rel: "noopener" } as const;
 
 export function ContactSection() {
   return (
-    <section id="contact" className="section-padding px-6 pb-32">
-      <div className="mx-auto max-w-6xl text-center">
-        <div className="mx-auto mb-8 h-px w-24 bg-gradient-to-r from-transparent via-[var(--accent-violet)] to-transparent" />
-        <div className="mb-4">
-          <BlurText
-            text="Let's build something impactful together."
-            as="h2"
-            animateBy="words"
-            delay={100}
-            className="font-display text-h1 font-bold leading-tight"
-          />
+    <section
+      id="contact"
+      tabIndex={-1}
+      aria-labelledby="contact-title"
+      className="section-y gutter border-t border-line focus:outline-none"
+    >
+      <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-20">
+        <div data-reveal>
+          <h2 id="contact-title" className="display-lg text-ink">
+            {contact.heading}
+          </h2>
+          <p className="mt-5 max-w-[40ch] text-[17px] text-muted">{contact.intro}</p>
+
+          <dl className="mt-10 divide-y divide-line border-y border-line text-[16px]">
+            <Row label="Email">
+              <a href={`mailto:${site.email}`} className="break-all text-ink underline decoration-line underline-offset-[6px] hover:text-accent hover:decoration-accent">
+                {site.email}
+              </a>
+              <CopyEmailButton className="ml-3" />
+            </Row>
+            <Row label="Phone">
+              <a href={site.phoneHref} className="text-ink underline decoration-line underline-offset-[6px] hover:text-accent hover:decoration-accent">
+                {site.phoneDisplay}
+              </a>
+            </Row>
+            <Row label="Profiles">
+              <a href={site.linkedin} {...newTab} className="text-ink underline decoration-line underline-offset-[6px] hover:text-accent hover:decoration-accent">
+                LinkedIn<span className="sr-only"> (opens in a new tab)</span>
+              </a>
+              <span aria-hidden="true" className="mx-2 text-muted">·</span>
+              <a href={site.github} {...newTab} className="text-ink underline decoration-line underline-offset-[6px] hover:text-accent hover:decoration-accent">
+                GitHub<span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </Row>
+          </dl>
+
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <Button variant="solid" href={resume.viewUrl} {...newTab}>
+              View resume ↗<span className="sr-only"> (opens in a new tab)</span>
+            </Button>
+            <Button variant="outline" href={resume.downloadUrl} rel="noopener">
+              Download resume
+            </Button>
+          </div>
         </div>
 
-        <motion.ul
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={sectionViewport}
-          className="mt-12 flex flex-wrap items-center justify-center gap-4"
-        >
-          {socials.map((social) => (
-            <motion.li key={social.label} variants={staggerItem}>
-              <MagneticButton
-                href={social.href}
-                variant="secondary"
-                className="min-w-[140px]"
-              >
-                {social.label}
-              </MagneticButton>
-            </motion.li>
-          ))}
-        </motion.ul>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={sectionViewport}
-          className="mt-16 text-sm text-[var(--text-secondary)]"
-        >
-          © {new Date().getFullYear()} Ashok Anumula. Crafted with Next.js &
-          motion.
-        </motion.p>
+        <div data-reveal>
+          <ContactForm />
+        </div>
       </div>
     </section>
+  );
+}
+
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-1 py-4">
+      <dt className="w-20 shrink-0 text-[14px] text-muted">{label}</dt>
+      <dd className="flex flex-wrap items-center">{children}</dd>
+    </div>
   );
 }

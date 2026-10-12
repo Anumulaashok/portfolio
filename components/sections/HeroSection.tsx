@@ -1,142 +1,60 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { BlurText } from "@/components/reactbits/BlurText";
-import { GradientText } from "@/components/reactbits/GradientText";
-import { GradientBlob } from "@/components/ui/GradientBlob";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-import { useMousePosition } from "@/hooks/useMousePosition";
-import { fadeInUp } from "@/lib/animations";
+import { hero, resume, site } from "@/content/profile";
+import { FieldPoster } from "@/components/hero/FieldPoster";
+import { EmbeddingField } from "@/components/hero/EmbeddingField";
 
 export function HeroSection() {
-  const { x, y } = useMousePosition();
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    setOffset({
-      x: x - window.innerWidth / 2,
-      y: y - window.innerHeight / 2,
-    });
-  }, [x, y]);
-
   return (
     <section
-      id="hero"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6"
+      id="top"
+      data-hero
+      aria-label="Introduction"
+      className="group/hero relative isolate flex min-h-[100svh] flex-col overflow-hidden"
     >
-      <GradientBlob mouseX={offset.x} mouseY={offset.y} />
-      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <motion.p
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mb-4 font-display text-2xl font-bold uppercase tracking-[0.15em] text-[var(--text-secondary)] md:text-4xl"
-          >
-            <GradientText className="font-display text-2xl font-bold uppercase tracking-[0.15em] md:text-4xl">
-              Backend Engineer
-              <br />
-              AI Agent Engineer
-            </GradientText>
-          </motion.p>
-          <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            <GradientText className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-              <BlurText
-                text="Anumula Ashok"
-                as="span"
-                animateBy="words"
-                delay={120}
-                triggerOnMount
-                className="gradient-letters inline-block"
-              />
-            </GradientText>
-          </h1>
-          <motion.p
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.3 }}
-            className="mt-6 max-w-2xl text-lg text-[var(--text-secondary)] md:text-xl"
-          >
-            Building scalable backend systems, intelligent AI agents, and
-            data-driven products that turn complex problems into elegant solutions.
-          </motion.p>
-          <motion.div
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.5 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
-          >
-            <MagneticButton href="#projects" variant="primary">
-              View Projects
-            </MagneticButton>
-            <MagneticButton href="#contact" variant="secondary">
-              Contact Me
-            </MagneticButton>
-          </motion.div>
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 transition-opacity duration-700 ease-out group-data-[field=live]/hero:opacity-0">
+          <FieldPoster />
+        </div>
+        <EmbeddingField />
+        <div aria-hidden="true" className="hero-scrim absolute inset-0" />
+      </div>
+
+      <div className="gutter flex flex-1 flex-col justify-between pb-10 pt-[88px] md:pb-14 md:pt-[104px]">
+        <div>
+          <h1 className="wordmark uppercase text-ink">{site.name}</h1>
+          <div className="mt-8 max-w-[280px] space-y-2 text-[14px] leading-[1.55] text-ink">
+            {hero.intro.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, x: 30 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="relative mx-auto flex h-64 w-64 items-center justify-center md:h-80 md:w-80"
-        >
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 rounded-full border border-dashed border-[var(--accent-violet)]/40"
-            aria-hidden
-          />
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-[-14px] rounded-full border border-[var(--border)]"
-            aria-hidden
-          />
-          <div className="absolute inset-6 rounded-full bg-[var(--accent-violet)]/30 blur-3xl" aria-hidden />
-          <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-[var(--accent-violet)] shadow-2xl shadow-[var(--accent-violet)]/30">
-            <Image
-              src="/profile.jpg"
-              alt="Ashok"
-              width={320}
-              height={320}
-              priority
-              className="h-full w-full object-cover"
-            />
+        <div className="mt-16 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+          <p className="display-xl text-ink">
+            <span className="block">{hero.headlineSans}</span>
+            <span className="block font-serif text-[1.08em] font-normal italic tracking-[-0.01em]">
+              {hero.headlineSerif}
+            </span>
+          </p>
+          <div className="flex shrink-0 flex-wrap items-center gap-6">
+            <a
+              href={hero.primaryCta.href}
+              className="inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 text-[15px] font-medium text-ink transition-colors duration-200 ease-out hover:border-accent hover:text-accent"
+            >
+              {hero.primaryCta.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href={resume.viewUrl}
+              target="_blank"
+              rel="noopener"
+              className="text-[15px] text-ink underline decoration-muted underline-offset-[6px] transition-colors duration-200 ease-out hover:text-accent hover:decoration-accent"
+            >
+              {hero.secondaryCta.label}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </div>
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-2 -top-2 h-4 w-4 rounded-full bg-[var(--accent-violet)] shadow-lg"
-            aria-hidden
-          />
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="absolute -bottom-3 left-4 h-3 w-3 rounded-full bg-[var(--accent-violet)]/70 shadow-lg"
-            aria-hidden
-          />
-        </motion.div>
-      </div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-12 left-1/2 z-10 -translate-x-1/2"
-        aria-hidden
-      >
-        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-[var(--border)] p-2">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="h-1.5 w-1 rounded-full bg-[var(--accent-violet)]"
-          />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

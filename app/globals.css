@@ -1,163 +1,245 @@
 @import "tailwindcss";
-@import "lenis/dist/lenis.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/space-grotesk/400.css";
-@import "@fontsource/space-grotesk/500.css";
-@import "@fontsource/space-grotesk/600.css";
-@import "@fontsource/space-grotesk/700.css";
 
+/* Dark is the default theme; [data-theme="light"] overrides. Components use tokens only. */
 :root {
-  --bg: #0a0a0a;
-  --surface: #141414;
-  --border: #262626;
-  --text-primary: #fafafa;
-  --text-secondary: #a1a1aa;
-  --accent-violet: #8b5cf6;
-  --accent-cyan: #06b6d4;
-  --accent-fuchsia: #d946ef;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --text-display: clamp(3rem, 8vw, 7rem);
-  --text-h1: clamp(2rem, 5vw, 4rem);
-  --text-h2: clamp(1.5rem, 3vw, 2.5rem);
-  --text-body: 1.125rem;
+  --bg: #1c211f;
+  --surface: #242a27;
+  --ink: #eef0ec;
+  --muted: #a3aba5;
+  --line: #343b37;
+  --accent: #e4b363;
+  --accent-ink: #1c211f;
+  --scrim: rgb(28 33 31 / 0.72);
+
+  --field-slate: #8693a0;
+  --field-sage: #96a89b;
+  --field-warm: #e4b363;
+  --field-cool: #8fb3d9;
+
+  --font-display: var(--font-inter-tight), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-serif: var(--font-instrument), Georgia, serif;
+
+  --radius-block: 12px;
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.18);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f2f3ef;
+  --surface: #ffffff;
+  --ink: #18201c;
+  --muted: #5e6862;
+  --line: #daddd6;
+  /* #9a6a12 measures 4.24:1 on --bg; darkened minimally to pass AA. */
+  --accent: #8f6310;
+  --accent-ink: #ffffff;
+  --scrim: rgb(242 243 239 / 0.78);
+
+  --field-slate: #7d8a93;
+  --field-sage: #8a9a8f;
+  --field-warm: #b9862c;
+  --field-cool: #6f93bf;
+
+  --shadow-soft: 0 1px 2px rgb(24 32 28 / 0.08);
+
+  color-scheme: light;
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-border: var(--border);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-accent-violet: var(--accent-violet);
-  --color-accent-cyan: var(--accent-cyan);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-scrim: var(--scrim);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --radius-block: var(--radius-block);
+  --shadow-soft: var(--shadow-soft);
+  --ease-out: var(--ease-out);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: auto;
-}
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: var(--text-body);
-  line-height: 1.6;
-  overflow-x: hidden;
-  cursor: none;
-}
-
-@media (pointer: coarse), (prefers-reduced-motion: reduce) {
   body {
-    cursor: auto;
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Layered so Tailwind color utilities on links still win. */
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
   }
 }
 
-.font-display {
-  font-family: var(--font-display);
+@utility prose-measure {
+  max-width: 70ch;
 }
 
-.text-display {
-  font-size: var(--text-display);
-  line-height: 1.05;
+@utility wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(64px, 11vw, 168px);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(32px, 4.5vw, 64px);
+  line-height: 1.02;
   letter-spacing: -0.03em;
 }
 
-/* Lets gradient-clipped text (GradientText) show through per-letter
-   animated spans (BlurText), since background-image/-clip don't inherit. */
-.gradient-letters,
-.gradient-letters span {
-  background-image: inherit;
-  -webkit-background-clip: inherit;
-  background-clip: inherit;
-  color: inherit;
-}
-
-.text-h1 {
-  font-size: var(--text-h1);
-  line-height: 1.1;
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
-.text-h2 {
-  font-size: var(--text-h2);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+@utility eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.section-padding {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-@media (min-width: 768px) {
-  .section-padding {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+@utility section-y {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  @media (min-width: 768px) {
+    padding-top: 136px;
+    padding-bottom: 136px;
   }
 }
 
-.grain-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+@utility gutter {
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: 768px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
-.glass-card {
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
+/* Static poster of the point field; the WebGL canvas fades in over it on capable desktops. */
+.field-poster {
+  background: url("/field-dark.svg") center / cover no-repeat;
 }
 
-.gradient-text {
-  background: linear-gradient(
-    135deg,
-    var(--accent-violet),
-    var(--accent-cyan),
-    var(--accent-fuchsia)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+:root[data-theme="light"] .field-poster {
+  background-image: url("/field-light.svg");
 }
 
-::selection {
-  background: rgba(139, 92, 246, 0.35);
-  color: var(--text-primary);
+/* Keeps small hero text at AA contrast over the point field. */
+.hero-scrim {
+  background:
+    linear-gradient(to top, var(--scrim) 0%, var(--scrim) 18%, transparent 55%),
+    linear-gradient(to right, var(--scrim) 0%, transparent 42%),
+    linear-gradient(to bottom, var(--scrim) 0%, transparent 22%);
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent-violet);
-  outline-offset: 3px;
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+
+/* Hidden state only applies once JS has opted in, so content is never stuck invisible. */
+html.reveal-ready [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+[data-reveal] {
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 600ms var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.reveal-ready [data-reveal]:not(.is-revealed) {
+    opacity: 1;
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,132 +1,70 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useLenis } from "@/components/providers/SmoothScrollProvider";
-import { ScrollProgress } from "./ScrollProgress";
-
-const navLinks = [
-  { href: "#hero", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#education", label: "Education" },
-  { href: "#timeline", label: "Timeline" },
-  { href: "#contact", label: "Contact" },
-];
+import { navItems, site } from "@/content/profile";
+import { useUi } from "@/components/providers/UiProvider";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navigation() {
-  const { lenis } = useLenis();
-  const [active, setActive] = useState("#hero");
-  const [scrolled, setScrolled] = useState(false);
-  const scrollY = useMotionValue(0);
-  const smoothScrollY = useSpring(scrollY, { stiffness: 120, damping: 28 });
-  const navOpacity = useTransform(smoothScrollY, [0, 80], [0.6, 1]);
+  const pathname = usePathname();
+  const { openPalette } = useUi();
+  const [shortcut, setShortcut] = useState("⌘K");
 
   useEffect(() => {
-    const updateScrolled = (y: number) => setScrolled(y > 40);
-
-    if (!lenis) {
-      const onScroll = () => {
-        const y = window.scrollY;
-        scrollY.set(y);
-        updateScrolled(y);
-      };
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-      return () => window.removeEventListener("scroll", onScroll);
-    }
-
-    const onLenisScroll = () => {
-      const y = lenis.scroll;
-      scrollY.set(y);
-      updateScrolled(y);
-    };
-
-    onLenisScroll();
-    lenis.on("scroll", onLenisScroll);
-    return () => lenis.off("scroll", onLenisScroll);
-  }, [lenis, scrollY]);
-
-  useEffect(() => {
-    const sections = navLinks
-      .map((l) => document.querySelector(l.href))
-      .filter(Boolean) as Element[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(`#${entry.target.id}`);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
-    );
-
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+    if (!/Mac|iPhone|iPad/.test(navigator.platform)) setShortcut("Ctrl K");
   }, []);
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    if (!href.startsWith("#") || !lenis) return;
-    e.preventDefault();
-    lenis.scrollTo(href, { offset: -80 });
-  };
+  const isHome = pathname === "/";
 
   return (
-    <>
-      <ScrollProgress />
-      <motion.header
-        style={{ opacity: navOpacity }}
-        className={`fixed top-0 left-0 right-0 z-[9996] transition-all duration-300 ${
-          scrolled
-            ? "border-b border-[var(--border)] bg-[rgba(10,10,10,0.85)] backdrop-blur-md"
-            : "bg-transparent"
-        }`}
-      >
-        <nav
-          className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
-          aria-label="Main navigation"
-        >
-          <Link
-            href="#hero"
-            onClick={(e) => handleNavClick(e, "#hero")}
-            className="font-display text-lg font-semibold tracking-tight text-[var(--text-primary)]"
-          >
-            Ashok<span className="text-[var(--accent-violet)]">.</span>
+    <header className="absolute inset-x-0 top-0 z-30">
+      <nav aria-label="Main" className="gutter flex h-[72px] items-center justify-between gap-4">
+        {isHome ? (
+          <span aria-hidden="true" />
+        ) : (
+          <Link href="/" className="font-display text-[17px] font-semibold tracking-tight text-ink">
+            {site.name}
           </Link>
-          <ul className="hidden items-center gap-1 md:flex">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`rounded-full px-3 py-1.5 text-sm transition-colors ${
-                    active === link.href
-                      ? "text-[var(--accent-violet)]"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
+        )}
+        <div className="flex items-center gap-1 rounded-full bg-scrim py-1 pl-4 pr-1 sm:gap-2">
+          <ul className="hidden items-center gap-6 pr-2 text-[14px] md:flex">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-ink transition-colors duration-200 ease-out hover:text-accent"
+                  >
+                    {item.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ) : (
+                  <Link href={item.href} className="text-ink transition-colors duration-200 ease-out hover:text-accent">
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
-          <Link
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "#contact")}
-            className="rounded-full border border-[var(--border)] px-4 py-1.5 text-sm text-[var(--text-primary)] transition-colors hover:border-[var(--accent-violet)] md:hidden"
+          <button
+            type="button"
+            onClick={(e) => openPalette(e.currentTarget)}
+            aria-keyshortcuts="Meta+K Control+K"
+            className="flex h-9 items-center gap-2 rounded-full border border-line px-3 text-[13px] text-ink transition-colors duration-200 ease-out hover:border-accent"
           >
-            Contact
-          </Link>
-        </nav>
-      </motion.header>
-    </>
+            <span className="md:hidden">Menu</span>
+            <span className="sr-only">Command palette</span>
+            <kbd aria-hidden="true" className="font-mono text-[12px] text-muted">
+              {shortcut}
+            </kbd>
+          </button>
+          <ThemeToggle />
+        </div>
+      </nav>
+    </header>
   );
 }
