@@ -168,6 +168,15 @@
   }
 }
 
+/* Static poster of the point field; the WebGL canvas fades in over it on capable desktops. */
+.field-poster {
+  background: url("/field-dark.svg") center / cover no-repeat;
+}
+
+:root[data-theme="light"] .field-poster {
+  background-image: url("/field-light.svg");
+}
+
 /* Keeps small hero text at AA contrast over the point field. */
 .hero-scrim {
   background:

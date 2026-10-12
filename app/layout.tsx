@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight, Instrument_Serif, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { PortfolioShell } from "@/components/PortfolioShell";
+import { Analytics } from "@/components/Analytics";
 import { site, siteUrl } from "@/content/profile";
 
 const interTight = Inter_Tight({
@@ -131,16 +131,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="antialiased">
         <PortfolioShell>{children}</PortfolioShell>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-VNLJB0DHR4"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-VNLJB0DHR4');`}
-        </Script>
+        <Analytics />
       </body>
     </html>
   );
