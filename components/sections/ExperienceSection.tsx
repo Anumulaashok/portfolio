@@ -1,49 +1,45 @@
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { Reveal } from "@/components/ui/Reveal";
 import { experience } from "@/content/profile";
+import { RoleHighlights } from "@/components/ui/RoleHighlights";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="section-padding border-b border-[var(--border)] px-6">
-      <div className="mx-auto max-w-6xl">
-        <SectionLabel index="02" title="Experience" />
+    <section
+      id="experience"
+      tabIndex={-1}
+      aria-labelledby="experience-title"
+      className="section-y gutter border-t border-line focus:outline-none"
+    >
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16">
+        <h2 id="experience-title" data-reveal className="display-lg text-ink lg:sticky lg:top-24 lg:self-start">
+          Experience
+        </h2>
 
-        <div className="space-y-16">
-          {experience.map((employer) => (
-            <div key={employer.company} className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-12">
-              <div>
-                <h3 className="font-display text-xl font-semibold text-[var(--text-primary)]">
-                  {employer.company}
-                </h3>
-                <p className="mt-1 font-mono text-xs text-[var(--text-tertiary)]">
-                  {employer.location}
+        <ol className="relative border-l border-line">
+          {experience.map((employer) =>
+            employer.roles.map((role, i) => (
+              <li key={`${employer.company}-${role.title}`} data-reveal className="relative pb-14 pl-8 last:pb-0 md:pl-10">
+                <span
+                  aria-hidden="true"
+                  className={`absolute -left-[5px] top-2 h-[9px] w-[9px] rounded-full border border-bg ${
+                    role.period.includes("Present") ? "bg-accent" : "bg-muted"
+                  }`}
+                />
+                <p className="text-[14px] text-muted">
+                  <time>{role.period}</time>
+                  {role.period.includes("Present") && <span className="ml-2 text-accent">· Current</span>}
                 </p>
-              </div>
-
-              <div className="space-y-10">
-                {employer.roles.map((role) => (
-                  <Reveal key={role.title}>
-                    <div>
-                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <h4 className="font-display text-lg font-semibold text-[var(--text-primary)]">
-                          {role.title}
-                        </h4>
-                        <span className="font-mono text-xs text-[var(--accent)]">
-                          {role.period}
-                        </span>
-                      </div>
-                      <ul className="mt-4 space-y-3 border-l border-[var(--border)] pl-5 text-[var(--text-secondary)]">
-                        {role.highlights.map((item) => (
-                          <li key={item.slice(0, 48)}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                <h3 className="mt-1 font-display text-[clamp(22px,2.4vw,30px)] font-semibold leading-tight tracking-tight text-ink">
+                  {role.title}
+                </h3>
+                <p className="mt-1 text-[15px] text-ink">
+                  {employer.company}
+                  {i === 0 && <span className="text-muted"> · {employer.location}</span>}
+                </p>
+                <RoleHighlights highlights={role.highlights} />
+              </li>
+            ))
+          )}
+        </ol>
       </div>
     </section>
   );

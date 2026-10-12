@@ -1,37 +1,37 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-type Theme = "light" | "dark";
+import { THEME_EVENT, currentTheme, toggleTheme, type Theme } from "@/lib/theme";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme | null>(null);
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    setTheme(document.documentElement.getAttribute("data-theme") as Theme | null);
+    setTheme(currentTheme());
+    const sync = () => setTheme(currentTheme());
+    window.addEventListener(THEME_EVENT, sync);
+    return () => window.removeEventListener(THEME_EVENT, sync);
   }, []);
 
-  const toggle = () => {
-    const current =
-      theme ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    const next: Theme = current === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try {
-      window.localStorage.setItem("theme", next);
-    } catch {
-      // ignore — per-viewer convenience only
-    }
-    setTheme(next);
-  };
+  const next = theme === "dark" ? "light" : "dark";
 
   return (
     <button
       type="button"
-      onClick={toggle}
-      aria-label={theme === "dark" ? "Light mode" : "Dark mode"}
-      className="rounded-[var(--radius-sm)] border border-[var(--border)] px-3 py-1.5 font-mono text-xs text-[var(--text-secondary)] transition-colors duration-150 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+      onClick={() => setTheme(toggleTheme())}
+      aria-label={`Switch to ${next} theme`}
+      className="grid h-9 w-9 place-items-center rounded-full text-muted transition-colors duration-200 ease-out hover:text-ink"
     >
-      {theme === "dark" ? "Light" : "Dark"}
+      <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5">
+        {theme === "dark" ? (
+          <>
+            <circle cx="10" cy="10" r="3.5" />
+            <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" strokeLinecap="round" />
+          </>
+        ) : (
+          <path d="M16 12.5A6.5 6.5 0 0 1 7.5 4a6.5 6.5 0 1 0 8.5 8.5Z" strokeLinejoin="round" />
+        )}
+      </svg>
     </button>
   );
 }

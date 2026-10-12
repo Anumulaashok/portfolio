@@ -1,15 +1,10 @@
-type TagListProps = {
-  tags: readonly string[];
-};
-
-/** Tech tags in mono, small, low-contrast. */
-export function TagList({ tags }: TagListProps) {
+export function TagList({ tags, className = "" }: { tags: readonly string[]; className?: string }) {
   return (
-    <ul className="flex flex-wrap gap-x-3 gap-y-1.5">
+    <ul className={`flex flex-wrap gap-2 ${className}`}>
       {tags.map((tag) => (
         <li
           key={tag}
-          className="font-mono text-xs text-[var(--text-tertiary)] before:mr-3 before:text-[var(--border)] before:content-['·'] first:before:content-none"
+          className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[12px] leading-5 text-muted"
         >
           {tag}
         </li>

@@ -1,27 +1,23 @@
 import type { AnchorHTMLAttributes } from "react";
 
 type ButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  variant?: "primary" | "secondary" | "link";
+  variant?: "solid" | "outline" | "text";
 };
 
-export function Button({
-  variant = "secondary",
-  className = "",
-  children,
-  ...props
-}: ButtonProps) {
-  const base =
-    "inline-flex items-center gap-2 font-mono text-sm transition-colors duration-150";
-  const styles = {
-    primary:
-      "rounded-[var(--radius-sm)] bg-[var(--accent)] px-5 py-2.5 text-[var(--accent-ink)] hover:opacity-90",
-    secondary:
-      "rounded-[var(--radius-sm)] border border-[var(--border)] px-5 py-2.5 text-[var(--text-primary)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
-    link: "text-[var(--accent)] underline underline-offset-4 hover:opacity-80",
-  } as const;
+const styles = {
+  solid:
+    "rounded-full bg-accent px-5 py-2.5 text-accent-ink hover:opacity-90",
+  outline:
+    "rounded-full border border-ink/60 px-5 py-2.5 text-ink hover:border-accent hover:text-accent",
+  text: "text-ink underline decoration-line underline-offset-[6px] hover:text-accent hover:decoration-accent",
+} as const;
 
+export function Button({ variant = "outline", className = "", children, ...props }: ButtonProps) {
   return (
-    <a className={`${base} ${styles[variant]} ${className}`} {...props}>
+    <a
+      className={`inline-flex items-center gap-2 text-[15px] font-medium transition-colors duration-200 ease-out ${styles[variant]} ${className}`}
+      {...props}
+    >
       {children}
     </a>
   );

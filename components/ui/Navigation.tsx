@@ -1,52 +1,67 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { navItems, site } from "@/content/profile";
+import { useUi } from "@/components/providers/UiProvider";
 import { ThemeToggle } from "./ThemeToggle";
-import { site } from "@/content/profile";
-
-const navLinks = [
-  { href: "/#work", label: "Work" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#skills", label: "Skills" },
-  { href: "/#education", label: "Education" },
-  { href: site.resumeFile, label: "Resume" },
-  { href: "/#contact", label: "Contact" },
-];
 
 export function Navigation() {
+  const pathname = usePathname();
+  const { openPalette } = useUi();
+  const [shortcut, setShortcut] = useState("⌘K");
+
+  useEffect(() => {
+    if (!/Mac|iPhone|iPad/.test(navigator.platform)) setShortcut("Ctrl K");
+  }, []);
+
+  const isHome = pathname === "/";
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-sm">
-      <nav
-        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3"
-        aria-label="Main navigation"
-      >
-        <Link
-          href="/#hero"
-          className="font-mono text-sm font-medium text-[var(--text-primary)]"
-        >
-          Anumula Ashok
-        </Link>
-        <ul className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => {
-            const isFile = link.href.endsWith(".pdf");
-            const className =
-              "font-mono text-sm text-[var(--text-secondary)] transition-colors duration-150 hover:text-[var(--accent)]";
-            return (
-              <li key={link.label}>
-                {isFile ? (
-                  <a href={link.href} target="_blank" rel="noreferrer" className={className}>
-                    {link.label}
+    <header className="absolute inset-x-0 top-0 z-30">
+      <nav aria-label="Main" className="gutter flex h-[72px] items-center justify-between gap-4">
+        {isHome ? (
+          <span aria-hidden="true" />
+        ) : (
+          <Link href="/" className="font-display text-[17px] font-semibold tracking-tight text-ink">
+            {site.name}
+          </Link>
+        )}
+        <div className="flex items-center gap-1 rounded-full bg-scrim py-1 pl-4 pr-1 sm:gap-2">
+          <ul className="hidden items-center gap-6 pr-2 text-[14px] md:flex">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-ink transition-colors duration-200 ease-out hover:text-accent"
+                  >
+                    {item.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 ) : (
-                  <Link href={link.href} className={className}>
-                    {link.label}
+                  <Link href={item.href} className="text-ink transition-colors duration-200 ease-out hover:text-accent">
+                    {item.label}
                   </Link>
                 )}
               </li>
-            );
-          })}
-        </ul>
-        <div className="flex items-center gap-4">
+            ))}
+          </ul>
+          <button
+            type="button"
+            onClick={(e) => openPalette(e.currentTarget)}
+            aria-keyshortcuts="Meta+K Control+K"
+            className="flex h-9 items-center gap-2 rounded-full border border-line px-3 text-[13px] text-ink transition-colors duration-200 ease-out hover:border-accent"
+          >
+            <span className="md:hidden">Menu</span>
+            <span className="sr-only">Command palette</span>
+            <kbd aria-hidden="true" className="font-mono text-[12px] text-muted">
+              {shortcut}
+            </kbd>
+          </button>
           <ThemeToggle />
         </div>
       </nav>

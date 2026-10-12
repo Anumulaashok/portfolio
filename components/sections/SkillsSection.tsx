@@ -1,26 +1,24 @@
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { Reveal } from "@/components/ui/Reveal";
-import { TagList } from "@/components/ui/TagList";
 import { skillGroups } from "@/content/profile";
+import { TagList } from "@/components/ui/TagList";
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="section-padding border-b border-[var(--border)] px-6">
-      <div className="mx-auto max-w-6xl">
-        <SectionLabel index="03" title="Skills" />
-
-        <div className="grid gap-10 sm:grid-cols-2">
-          {skillGroups.map((group) => (
-            <Reveal key={group.title}>
-              <h3 className="font-mono text-xs uppercase tracking-wide text-[var(--text-tertiary)]">
-                {group.title}
-              </h3>
-              <div className="mt-3">
-                <TagList tags={group.skills} />
-              </div>
-            </Reveal>
-          ))}
-        </div>
+    <section
+      id="skills"
+      tabIndex={-1}
+      aria-labelledby="skills-title"
+      className="section-y gutter border-t border-line focus:outline-none"
+    >
+      <h2 id="skills-title" data-reveal className="display-lg text-ink">
+        Skills
+      </h2>
+      <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-4">
+        {skillGroups.map((group) => (
+          <div key={group.title} data-reveal className="border-t border-line pt-6">
+            <h3 className="text-[19px] font-semibold tracking-tight text-ink">{group.title}</h3>
+            <TagList tags={group.skills} className="mt-5" />
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -1,76 +1,70 @@
 @import "tailwindcss";
 
-/*
-  Design tokens — "engineering notebook / technical editorial".
-  Light-first, one restrained accent (signal orange), proper dark mode
-  with the same hierarchy (not neon). Everything below is a token; no
-  component should hard-code a color, radius or font.
-*/
+/* Dark is the default theme; [data-theme="light"] overrides. Components use tokens only. */
 :root {
-  --bg: #faf7f0;
-  --surface: #ffffff;
-  --border: #c3b89a;
-  --text-primary: #1c2530;
-  --text-secondary: #566070;
-  --text-tertiary: #5b6472;
-  --accent: #b8460f;
-  --accent-ink: #ffffff;
+  --bg: #1c211f;
+  --surface: #242a27;
+  --ink: #eef0ec;
+  --muted: #a3aba5;
+  --line: #343b37;
+  --accent: #e4b363;
+  --accent-ink: #1c211f;
+  --scrim: rgb(28 33 31 / 0.72);
 
-  --font-display: var(--font-fraunces), "Georgia", serif;
+  --field-slate: #8693a0;
+  --field-sage: #96a89b;
+  --field-warm: #e4b363;
+  --field-cool: #8fb3d9;
+
+  --font-display: var(--font-inter-tight), system-ui, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
-  --font-mono: var(--font-mono-plex), "SFMono-Regular", monospace;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-serif: var(--font-instrument), Georgia, serif;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  --radius-block: 12px;
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.18);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --space-section: 6rem;
-  --space-section-md: 8rem;
-
-  --text-display: clamp(2.5rem, 6vw, 5rem);
-  --text-h1: clamp(1.875rem, 4vw, 3rem);
-  --text-h2: clamp(1.375rem, 2.5vw, 1.875rem);
-  --text-body: 1.0625rem;
-
-  --motion-duration: 180ms;
-  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #14181f;
-    --surface: #1b212b;
-    --border: #414b59;
-    --text-primary: #f2efe6;
-    --text-secondary: #aab0bc;
-    --text-tertiary: #7b8392;
-    --accent: #ef7b3c;
-    --accent-ink: #14181f;
-  }
-}
+:root[data-theme="light"] {
+  --bg: #f2f3ef;
+  --surface: #ffffff;
+  --ink: #18201c;
+  --muted: #5e6862;
+  --line: #daddd6;
+  /* #9a6a12 measures 4.24:1 on --bg; darkened minimally to pass AA. */
+  --accent: #8f6310;
+  --accent-ink: #ffffff;
+  --scrim: rgb(242 243 239 / 0.78);
 
-:root[data-theme="dark"] {
-  --bg: #14181f;
-  --surface: #1b212b;
-  --border: #414b59;
-  --text-primary: #f2efe6;
-  --text-secondary: #aab0bc;
-  --text-tertiary: #7b8392;
-  --accent: #ef7b3c;
-  --accent-ink: #14181f;
+  --field-slate: #7d8a93;
+  --field-sage: #8a9a8f;
+  --field-warm: #b9862c;
+  --field-cool: #6f93bf;
+
+  --shadow-soft: 0 1px 2px rgb(24 32 28 / 0.08);
+
+  color-scheme: light;
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-border: var(--border);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  --color-scrim: var(--scrim);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
   --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --radius-block: var(--radius-block);
+  --shadow-soft: var(--shadow-soft);
+  --ease-out: var(--ease-out);
 }
 
 @layer base {
@@ -81,116 +75,162 @@
   }
 
   html {
-    scroll-behavior: auto;
-    color-scheme: light dark;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     margin: 0;
     background: var(--bg);
-    color: var(--text-primary);
+    color: var(--ink);
     font-family: var(--font-body);
-    font-size: var(--text-body);
+    font-size: 17px;
     line-height: 1.6;
-    transition: background-color var(--motion-duration) var(--motion-ease),
-      color var(--motion-duration) var(--motion-ease);
   }
 
-  /* In @layer base so utility classes like text-[var(--accent-ink)] can
-     still override it — unlayered CSS beats @layer utilities regardless
-     of specificity, which silently broke every colored link/button. */
+  /* Layered so Tailwind color utilities on links still win. */
   a {
     color: inherit;
   }
-}
 
-.prose-measure {
-  max-width: 70ch;
-}
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 
-.font-display {
-  font-family: var(--font-display);
-}
-
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-.text-display {
-  font-size: var(--text-display);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-}
-
-.text-h1 {
-  font-size: var(--text-h1);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-}
-
-.text-h2 {
-  font-size: var(--text-h2);
-  line-height: 1.25;
-}
-
-.section-padding {
-  padding-top: var(--space-section);
-  padding-bottom: var(--space-section);
-}
-
-@media (min-width: 768px) {
-  .section-padding {
-    padding-top: var(--space-section-md);
-    padding-bottom: var(--space-section-md);
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
   }
 }
 
-.hairline {
-  border-color: var(--border);
+@utility prose-measure {
+  max-width: 70ch;
 }
 
-a.link-accent,
-.link-accent {
-  color: var(--accent);
-  text-underline-offset: 3px;
+@utility wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(64px, 11vw, 168px);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
 }
 
-::selection {
-  background: color-mix(in srgb, var(--accent) 30%, transparent);
-  color: var(--text-primary);
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(32px, 4.5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+@utility eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@utility section-y {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  @media (min-width: 768px) {
+    padding-top: 136px;
+    padding-bottom: 136px;
+  }
+}
+
+@utility gutter {
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: 768px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Keeps small hero text at AA contrast over the point field. */
+.hero-scrim {
+  background:
+    linear-gradient(to top, var(--scrim) 0%, var(--scrim) 18%, transparent 55%),
+    linear-gradient(to right, var(--scrim) 0%, transparent 42%),
+    linear-gradient(to bottom, var(--scrim) 0%, transparent 22%);
 }
 
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 10000;
+  z-index: 100;
   background: var(--accent);
   color: var(--accent-ink);
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14px;
 }
 
 .skip-link:focus {
-  left: 1rem;
-  top: 1rem;
+  left: 16px;
+  top: 16px;
+}
+
+/* Hidden state only applies once JS has opted in, so content is never stuck invisible. */
+html.reveal-ready [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+[data-reveal] {
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 600ms var(--ease-out) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.reveal-ready [data-reveal]:not(.is-revealed) {
+    opacity: 1;
+    transform: none;
+  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
