@@ -1,46 +1,64 @@
 import type { Metadata } from "next";
+import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { PortfolioShell } from "@/components/PortfolioShell";
-import Script from "next/script";
+import { site } from "@/content/profile";
 
-const siteUrl = "https://anumulaashok.dev";
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono-plex",
+  weight: ["400", "500"],
+  display: "swap",
+});
+
+const siteUrl = "https://anumulaashokportfolio.netlify.app";
 
 export const metadata: Metadata = {
-  title: "Ashok Anumula | Backend & AI Agent Engineer",
+  metadataBase: new URL(siteUrl),
+  title: "Anumula Ashok | Generative AI Engineer",
   description:
-    "Portfolio of Ashok Anumula — Backend Engineer and AI Agent Engineer building scalable systems, intelligent agents, and data-driven products.",
+    "Portfolio of Anumula Ashok — Generative AI Engineer building production LLM agents (LangChain, RAG) and the fault-tolerant distributed systems (Temporal, Kubernetes) they run on.",
   keywords: [
-    "Ashok Anumula",
-    "Backend Engineer",
-    "AI Agent Engineer",
-    "Software Engineer",
+    "Anumula Ashok",
+    "Generative AI Engineer",
+    "LLM Agents",
     "LangChain",
+    "RAG",
+    "Temporal",
+    "Backend Engineer",
     "Spring Boot",
     "Node.js",
   ],
-  authors: [{ name: "Ashok Anumula" }],
+  authors: [{ name: "Anumula Ashok" }],
   openGraph: {
-    title: "Ashok Anumula | Backend & AI Agent Engineer",
+    title: "Anumula Ashok | Generative AI Engineer",
     description:
-      "Building scalable backend systems, AI agents, and data-driven products.",
+      "Production LLM agents (LangChain, RAG) and the fault-tolerant distributed systems (Temporal, Kubernetes) they run on.",
     url: siteUrl,
-    siteName: "Ashok Anumula Portfolio",
+    siteName: "Anumula Ashok — Portfolio",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: `${siteUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "Ashok Anumula — Backend & AI Agent Engineer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ashok Anumula | Backend & AI Agent Engineer",
+    title: "Anumula Ashok | Generative AI Engineer",
     description:
-      "Building scalable backend systems, AI agents, and data-driven products.",
+      "Production LLM agents (LangChain, RAG) and the fault-tolerant distributed systems (Temporal, Kubernetes) they run on.",
   },
   robots: {
     index: true,
@@ -51,28 +69,39 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Ashok Anumula",
-  jobTitle: "Backend Engineer | AI Agent Engineer",
+  name: site.name,
+  jobTitle: "Generative AI Engineer | Software Development Engineer",
   url: siteUrl,
-  sameAs: [
-    "https://www.linkedin.com/in/ashoksmart143",
-    "https://github.com/Anumulaashok",
-  ],
-  email: "anumulaashok85@gmail.com",
+  sameAs: [site.linkedin, site.github],
+  email: site.email,
   knowsAbout: [
+    "LangChain",
+    "Retrieval-Augmented Generation",
+    "Temporal",
     "Java",
     "Spring Boot",
     "Node.js",
-    "React",
-    "LangChain",
-    "AI Agents",
-    "Microservices",
+    "Kubernetes",
   ],
   worksFor: {
     "@type": "Organization",
-    name: "Revlitix",
+    name: "RagaAI",
   },
 };
+
+// Runs before paint to avoid a flash of the wrong theme. Reads only
+// localStorage (a per-viewer convenience); the no-JS/no-storage state
+// falls back to the prefers-color-scheme media query already in globals.css.
+const themeInitScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark") {
+      document.documentElement.setAttribute("data-theme", stored);
+    }
+  } catch (e) {}
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -80,8 +109,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable}`}
+    >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

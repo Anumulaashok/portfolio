@@ -1,70 +1,36 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-import { BlurText } from "@/components/reactbits/BlurText";
-import { staggerContainer, staggerItem } from "@/lib/animations";
-import { sectionViewport } from "@/lib/viewport";
-
-const socials = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/ashoksmart143",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/Anumulaashok",
-  },
-  {
-    label: "Email",
-    href: "mailto:anumulaashok85@gmail.com",
-  },
-];
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Button } from "@/components/ui/Button";
+import { site } from "@/content/profile";
 
 export function ContactSection() {
   return (
     <section id="contact" className="section-padding px-6 pb-32">
-      <div className="mx-auto max-w-6xl text-center">
-        <div className="mx-auto mb-8 h-px w-24 bg-gradient-to-r from-transparent via-[var(--accent-violet)] to-transparent" />
-        <div className="mb-4">
-          <BlurText
-            text="Let's build something impactful together."
-            as="h2"
-            animateBy="words"
-            delay={100}
-            className="font-display text-h1 font-bold leading-tight"
-          />
+      <div className="mx-auto max-w-6xl">
+        <SectionLabel index="05" title="Contact" />
+
+        <p className="prose-measure text-lg text-[var(--text-secondary)]">
+          Open to Generative AI Engineer and AI-focused backend roles. The
+          fastest way to reach me is email.
+        </p>
+
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Button variant="primary" href={`mailto:${site.email}`}>
+            {site.email}
+          </Button>
+          <Button variant="secondary" href={site.linkedin} target="_blank" rel="noreferrer">
+            LinkedIn
+          </Button>
+          <Button variant="secondary" href={site.github} target="_blank" rel="noreferrer">
+            GitHub
+          </Button>
+          <Button variant="secondary" href={site.resumeFile} target="_blank" rel="noreferrer">
+            Download resume
+          </Button>
         </div>
 
-        <motion.ul
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={sectionViewport}
-          className="mt-12 flex flex-wrap items-center justify-center gap-4"
-        >
-          {socials.map((social) => (
-            <motion.li key={social.label} variants={staggerItem}>
-              <MagneticButton
-                href={social.href}
-                variant="secondary"
-                className="min-w-[140px]"
-              >
-                {social.label}
-              </MagneticButton>
-            </motion.li>
-          ))}
-        </motion.ul>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={sectionViewport}
-          className="mt-16 text-sm text-[var(--text-secondary)]"
-        >
-          © {new Date().getFullYear()} Ashok Anumula. Crafted with Next.js &
-          motion.
-        </motion.p>
+        <p className="mt-16 font-mono text-xs text-[var(--text-tertiary)]">
+          © {new Date().getFullYear()} {site.name}. {site.location}.
+        </p>
       </div>
     </section>
   );
