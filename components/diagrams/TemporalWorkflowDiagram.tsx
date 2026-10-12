@@ -15,15 +15,15 @@ export function TemporalWorkflowDiagram() {
       </desc>
       <defs>
         <marker id="tw-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-          <path d="M0,0 L8,4 L0,8 Z" fill="var(--text-secondary)" />
+          <path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)" />
         </marker>
       </defs>
 
-      <rect x="230" y="20" width="180" height="56" rx="4" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.5" />
-      <text x="320" y="44" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="13" fill="var(--text-primary)">
+      <rect x="230" y="20" width="180" height="56" rx="8" fill="var(--bg)" stroke="var(--accent)" strokeWidth="1.5" />
+      <text x="320" y="44" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="13" fill="var(--ink)">
         Temporal workflow
       </text>
-      <text x="320" y="62" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fill="var(--text-tertiary)">
+      <text x="320" y="62" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fill="var(--muted)">
         retries · idempotency · concurrency
       </text>
 
@@ -34,19 +34,19 @@ export function TemporalWorkflowDiagram() {
         { x: 470, y: 130, label: "RPA" },
       ].map((box) => (
         <g key={box.label}>
-          <rect x={box.x} y={box.y} width="120" height="48" rx="4" fill="var(--surface)" stroke="var(--border)" />
-          <text x={box.x + 60} y={box.y + 29} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="12" fill="var(--text-primary)">
+          <rect x={box.x} y={box.y} width="120" height="48" rx="8" fill="var(--bg)" stroke="var(--muted)" />
+          <text x={box.x + 60} y={box.y + 29} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="12" fill="var(--ink)">
             {box.label}
           </text>
-          <line x1={box.x + 60} y1="128" x2="320" y2="78" stroke="var(--text-secondary)" markerEnd="url(#tw-arrow)" />
+          <line x1={box.x + 60} y1="128" x2="320" y2="78" stroke="var(--muted)" markerEnd="url(#tw-arrow)" />
         </g>
       ))}
 
-      <rect x="150" y="200" width="340" height="30" rx="4" fill="var(--surface)" stroke="var(--border)" />
-      <text x="320" y="219" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="11" fill="var(--text-secondary)">
+      <rect x="150" y="200" width="340" height="30" rx="8" fill="var(--bg)" stroke="var(--muted)" />
+      <text x="320" y="219" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="11" fill="var(--muted)">
         multi-tenant PostgreSQL · Kubernetes (GKE)
       </text>
-      <line x1="320" y1="76" x2="320" y2="198" stroke="var(--text-secondary)" markerEnd="url(#tw-arrow)" />
+      <line x1="320" y1="76" x2="320" y2="198" stroke="var(--muted)" markerEnd="url(#tw-arrow)" />
     </svg>
   );
 }

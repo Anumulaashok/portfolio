@@ -22,7 +22,7 @@ export function RagAgentDiagram() {
           refY="4"
           orient="auto"
         >
-          <path d="M0,0 L8,4 L0,8 Z" fill="var(--text-secondary)" />
+          <path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)" />
         </marker>
       </defs>
 
@@ -40,9 +40,9 @@ export function RagAgentDiagram() {
               y={box.y}
               width={box.w}
               height={box.h}
-              rx={4}
-              fill="var(--surface)"
-              stroke="var(--border)"
+              rx={8}
+              fill="var(--bg)"
+              stroke="var(--muted)"
             />
             <text
               x={box.x + box.w / 2}
@@ -50,7 +50,7 @@ export function RagAgentDiagram() {
               textAnchor="middle"
               fontFamily="var(--font-mono)"
               fontSize="13"
-              fill="var(--text-primary)"
+              fill="var(--ink)"
             >
               {box.label}
             </text>
@@ -60,7 +60,7 @@ export function RagAgentDiagram() {
               textAnchor="middle"
               fontFamily="var(--font-mono)"
               fontSize="10"
-              fill="var(--text-tertiary)"
+              fill="var(--muted)"
             >
               {box.sub}
             </text>
@@ -68,9 +68,9 @@ export function RagAgentDiagram() {
         ) : null
       )}
 
-      <line x1="130" y1="110" x2="178" y2="110" stroke="var(--text-secondary)" markerEnd="url(#rag-arrow)" />
-      <line x1="330" y1="95" x2="378" y2="45" stroke="var(--text-secondary)" markerEnd="url(#rag-arrow)" />
-      <line x1="330" y1="120" x2="378" y2="170" stroke="var(--text-secondary)" markerEnd="url(#rag-arrow)" />
+      <line x1="130" y1="110" x2="178" y2="110" stroke="var(--muted)" markerEnd="url(#rag-arrow)" />
+      <line x1="330" y1="95" x2="378" y2="45" stroke="var(--muted)" markerEnd="url(#rag-arrow)" />
+      <line x1="330" y1="120" x2="378" y2="170" stroke="var(--muted)" markerEnd="url(#rag-arrow)" />
       <line x1="325" y1="150" x2="178" y2="130" stroke="var(--accent)" strokeDasharray="4 3" markerEnd="url(#rag-arrow)" />
 
       <text x="252" y="185" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fill="var(--accent)">

@@ -1,118 +1,106 @@
 import Link from "next/link";
-import type { CaseStudy } from "@/content/profile";
+import type { CaseStudy } from "@/content/projects";
+import { diagrams } from "@/components/diagrams";
 import { TagList } from "@/components/ui/TagList";
-import { Divider } from "@/components/ui/Divider";
 import { Button } from "@/components/ui/Button";
-import { RagAgentDiagram } from "@/components/diagrams/RagAgentDiagram";
-import { TemporalWorkflowDiagram } from "@/components/diagrams/TemporalWorkflowDiagram";
-import { ChendaVasoolDiagram } from "@/components/diagrams/ChendaVasoolDiagram";
 
-const diagrams = {
-  ragAgent: RagAgentDiagram,
-  temporalWorkflow: TemporalWorkflowDiagram,
-  chendaVasool: ChendaVasoolDiagram,
-};
-
-export function CaseStudyTemplate({ study }: { study: CaseStudy }) {
+export function CaseStudyTemplate({ study, next }: { study: CaseStudy; next: CaseStudy }) {
   const Diagram = diagrams[study.diagram];
 
   return (
-    <article className="section-padding px-6">
-      <div className="mx-auto max-w-3xl">
-        <Link
-          href="/#work"
-          className="font-mono text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]"
-        >
-          ← Back to selected work
-        </Link>
+    <article className="gutter pb-24 pt-[120px] md:pt-[152px]">
+      <Link href="/#work" className="text-[14px] text-muted transition-colors duration-200 ease-out hover:text-ink">
+        ← All work
+      </Link>
 
-        <p className="mt-8 font-mono text-sm uppercase tracking-wide text-[var(--accent)]">
-          {study.company}
-        </p>
-        <h1 className="mt-3 font-display text-h1 font-semibold text-[var(--text-primary)]">
-          {study.title}
-        </h1>
-        <p className="prose-measure mt-4 text-lg text-[var(--text-secondary)]">
-          {study.summary}
-        </p>
+      <header className="mt-10 max-w-[1100px]">
+        <p className="eyebrow">{study.company}</p>
+        <h1 className="display-xl mt-4 text-ink">{study.title}</h1>
+        <p className="prose-measure mt-6 text-[clamp(18px,1.6vw,21px)] text-muted">{study.summary}</p>
 
-        {(study.liveUrl || study.storeUrl) && (
-          <div className="mt-6">
-            <div className="flex flex-wrap gap-3">
+        {(study.liveUrl || study.betaUrl) && (
+          <div className="mt-8">
+            <div className="flex flex-wrap items-center gap-3">
               {study.liveUrl && (
-                <Button variant="secondary" href={study.liveUrl} target="_blank" rel="noreferrer">
-                  Live site
+                <Button variant="solid" href={study.liveUrl} target="_blank" rel="noopener">
+                  {study.liveLabel ?? "Visit site"} ↗<span className="sr-only"> (opens in a new tab)</span>
                 </Button>
               )}
-              {study.storeUrl && (
-                <Button variant="secondary" href={study.storeUrl} target="_blank" rel="noreferrer">
-                  {study.storeLabel ?? "Google Play"}
+              {study.betaUrl && (
+                <Button variant="outline" href={study.betaUrl} target="_blank" rel="noopener">
+                  {study.betaLabel} ↗<span className="sr-only"> (opens in a new tab)</span>
                 </Button>
               )}
             </div>
-            {study.storeNote && (
-              <p className="mt-2 font-mono text-xs text-[var(--text-tertiary)]">
-                {study.storeNote}
-              </p>
-            )}
+            {study.betaNote && <p className="mt-3 text-[14px] text-muted">{study.betaNote}</p>}
           </div>
         )}
+      </header>
 
-        <Divider className="my-10" />
-
-        <Section title="Context">{study.context}</Section>
-        <Section title="Problem">{study.problem}</Section>
-        <Section title="My role">{study.role}</Section>
-
-        <h2 className="mt-10 font-display text-h2 font-semibold text-[var(--text-primary)]">
-          Architecture
-        </h2>
-        <div className="prose-measure mt-4 overflow-x-auto rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] p-6">
-          <Diagram />
-        </div>
-        <p className="prose-measure mt-4 text-[var(--text-secondary)]">{study.architecture}</p>
-
-        <h2 className="mt-10 font-display text-h2 font-semibold text-[var(--text-primary)]">
-          Key decisions &amp; trade-offs
-        </h2>
-        <ul className="prose-measure mt-4 space-y-3 border-l-2 border-[var(--border)] pl-6 text-[var(--text-secondary)]">
-          {study.decisions.map((d) => (
-            <li key={d.slice(0, 40)}>{d}</li>
-          ))}
-        </ul>
-
-        <h2 className="mt-10 font-display text-h2 font-semibold text-[var(--text-primary)]">
-          Results
-        </h2>
-        <ul className="prose-measure mt-4 space-y-3 border-l-2 border-[var(--accent)] pl-6 text-[var(--text-secondary)]">
-          {study.results.map((r) => (
-            <li key={r.slice(0, 40)}>{r}</li>
-          ))}
-        </ul>
-
-        <h2 className="mt-10 font-display text-h2 font-semibold text-[var(--text-primary)]">
-          Stack
-        </h2>
-        <div className="mt-4">
+      <div className="mt-16 flex flex-col gap-14 border-t border-line pt-14">
+        <Block title="Context">
+          <p>{study.context}</p>
+        </Block>
+        <Block title="Problem">
+          <p>{study.problem}</p>
+        </Block>
+        <Block title="My role">
+          <p>{study.role}</p>
+        </Block>
+        <Block title="Architecture">
+          <figure>
+            <div className="overflow-x-auto rounded-block border border-line bg-surface p-5 md:p-8">
+              <div className="min-w-[560px]">
+                <Diagram />
+              </div>
+            </div>
+            <figcaption className="mt-5">{study.architecture}</figcaption>
+          </figure>
+        </Block>
+        <Block title="Key decisions & trade-offs">
+          <ul className="space-y-4">
+            {study.decisions.map((d) => (
+              <li key={d} className="relative pl-5 before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-2.5 before:bg-muted">
+                {d}
+              </li>
+            ))}
+          </ul>
+        </Block>
+        <Block title="Results">
+          <ul className="space-y-4">
+            {study.results.map((r) => (
+              <li key={r} className="relative pl-5 text-ink before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-2.5 before:bg-accent">
+                {r}
+              </li>
+            ))}
+          </ul>
+        </Block>
+        <Block title="Stack">
           <TagList tags={study.stack} />
-        </div>
-
-        <h2 className="mt-10 font-display text-h2 font-semibold text-[var(--text-primary)]">
-          What I&apos;d do next
-        </h2>
-        <p className="prose-measure mt-4 text-[var(--text-secondary)]">{study.nextSteps}</p>
+        </Block>
+        <Block title="What I'd do next">
+          <p>{study.nextSteps}</p>
+        </Block>
       </div>
+
+      <nav aria-label="Next case study" className="mt-24 border-t border-line pt-10">
+        <p className="eyebrow">Next case study</p>
+        <Link
+          href={`/work/${next.slug}`}
+          className="display-lg mt-3 inline-block text-ink transition-colors duration-200 ease-out hover:text-accent"
+        >
+          {next.shortTitle} →
+        </Link>
+      </nav>
     </article>
   );
 }
 
-function Section({ title, children }: { title: string; children: string }) {
+function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mt-8 first:mt-0">
-      <h2 className="font-display text-h2 font-semibold text-[var(--text-primary)]">
-        {title}
-      </h2>
-      <p className="prose-measure mt-3 text-[var(--text-secondary)]">{children}</p>
-    </div>
+    <section data-reveal className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-16">
+      <h2 className="text-[19px] font-semibold tracking-tight text-ink">{title}</h2>
+      <div className="prose-measure text-[17px] text-muted">{children}</div>
+    </section>
   );
 }
