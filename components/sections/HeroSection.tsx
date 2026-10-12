@@ -1,59 +1,57 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/Button";
-import { MetricStat } from "@/components/ui/MetricStat";
-import { hero, site } from "@/content/profile";
+import { hero, resume, site } from "@/content/profile";
+import { FieldPoster } from "@/components/hero/FieldPoster";
+import { EmbeddingField } from "@/components/hero/EmbeddingField";
 
 export function HeroSection() {
   return (
     <section
-      id="hero"
-      className="section-padding border-b border-[var(--border)] px-6"
+      id="top"
+      data-hero
+      aria-label="Introduction"
+      className="group/hero relative isolate flex min-h-[100svh] flex-col overflow-hidden"
     >
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-start">
-        <div>
-          <p className="font-mono text-sm uppercase tracking-wide text-[var(--accent)]">
-            {hero.eyebrow}
-          </p>
-          <h1 className="mt-4 font-display text-display font-semibold text-[var(--text-primary)]">
-            {hero.name}
-          </h1>
-          <p className="prose-measure mt-6 text-lg text-[var(--text-secondary)]">
-            {hero.supportingLine}
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button
-              variant="primary"
-              href={site.resumeFile}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Download resume
-            </Button>
-            <Button variant="secondary" href="#work">
-              View case studies
-            </Button>
-            <Button variant="link" href={`mailto:${site.email}`}>
-              {site.email}
-            </Button>
-          </div>
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 transition-opacity duration-700 ease-out group-data-[field=live]/hero:opacity-0">
+          <FieldPoster />
+        </div>
+        <EmbeddingField />
+        <div aria-hidden="true" className="hero-scrim absolute inset-0" />
+      </div>
 
-          <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
-            {hero.proofRow.map((stat) => (
-              <MetricStat key={stat.label} value={stat.value} label={stat.label} />
+      <div className="gutter flex flex-1 flex-col justify-between pb-10 pt-[88px] md:pb-14 md:pt-[104px]">
+        <div>
+          <h1 className="wordmark uppercase text-ink">{site.name}</h1>
+          <div className="mt-8 max-w-[280px] space-y-2 text-[14px] leading-[1.55] text-ink">
+            {hero.intro.map((line) => (
+              <p key={line}>{line}</p>
             ))}
           </div>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
-          <div className="h-40 w-40 overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] lg:h-48 lg:w-48">
-            <Image
-              src="/profile.jpg"
-              alt="Anumula Ashok, Generative AI engineer and backend developer"
-              width={480}
-              height={480}
-              priority
-              className="h-full w-full object-cover"
-            />
+        <div className="mt-16 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+          <p className="display-xl text-ink">
+            <span className="block">{hero.headlineSans}</span>
+            <span className="block font-serif text-[1.08em] font-normal italic tracking-[-0.01em]">
+              {hero.headlineSerif}
+            </span>
+          </p>
+          <div className="flex shrink-0 flex-wrap items-center gap-6">
+            <a
+              href={hero.primaryCta.href}
+              className="inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 text-[15px] font-medium text-ink transition-colors duration-200 ease-out hover:border-accent hover:text-accent"
+            >
+              {hero.primaryCta.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href={resume.viewUrl}
+              target="_blank"
+              rel="noopener"
+              className="text-[15px] text-ink underline decoration-muted underline-offset-[6px] transition-colors duration-200 ease-out hover:text-accent hover:decoration-accent"
+            >
+              {hero.secondaryCta.label}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </div>
         </div>
       </div>
